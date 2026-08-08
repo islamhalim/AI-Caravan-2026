@@ -3,6 +3,7 @@ service cloud.firestore {
   match /databases/{database}/documents {
     match /registrations-2026/{emailId} {
       allow create: if !exists(/databases/$(database)/documents/registrations-2026/$(emailId))
+        && request.time >= timestamp.value('2026-08-14T21:00:00Z')
         && request.time < timestamp.date(2026, 8, 26)
         && request.resource.data.programYear == 2026
         && request.resource.data.consent == true
