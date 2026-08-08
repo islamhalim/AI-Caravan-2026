@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /registrations-2026/{emailId} {
+      allow create: if !exists(/databases/$(database)/documents/registrations-2026/$(emailId))
+        && request.time < timestamp.date(2026, 8, 26)
+        && request.resource.data.programYear == 2026
+        && request.resource.data.consent == true
+        && request.resource.data.email is string
+        && request.resource.data.name is string
+        && request.resource.data.title is string
+        && request.resource.data.dateOfBirth is string
+        && request.resource.data.gender in [
+          'Male', 'Female', 'Prefer not to say'
+        ]
+        && request.resource.data.track in [
+          'AI Expert', 'AI Strategist', 'AI Engineer',
+          'AI Viber', 'AI Administrator', 'AI Junior'
+        ];
+      allow read, update, delete: if false;
+    }
+  }
+}
