@@ -1,159 +1,175 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, Briefcase, Rocket } from 'lucide-react';
+import {
+  BriefcaseBusiness,
+  CheckCircle2,
+  GraduationCap,
+  School,
+  Sparkles,
+} from 'lucide-react';
 
 import Team from './Team';
 import Outcomes from './Outcomes';
 import TopSection from '../TopSection';
+
+const audiences = [
+  {
+    number: '01',
+    title: 'Professionals',
+    eyebrow: 'Upskill. Apply. Lead.',
+    description:
+      'Practical learning experiences help professionals understand emerging AI technologies, apply them responsibly, and turn knowledge into solutions for their industries and communities.',
+    highlights: ['Advanced AI training', 'Industry-focused applications', 'Responsible AI leadership'],
+    icon: BriefcaseBusiness,
+    images: [
+      { src: '/imgs/042A0408.jpg', alt: 'Professionals exchanging ideas during an AI Caravan workshop' },
+      { src: '/imgs/IMG_5559.png', alt: 'A diverse professional community at an IEEE Computer Society event' },
+      { src: '/imgs/569443138_122133392216959552_7396368427657888153_n - Copy.jpg', alt: 'Professionals participating in an AI Caravan learning session' },
+    ],
+  },
+  {
+    number: '02',
+    title: 'University Students & Young Professionals',
+    eyebrow: 'Learn. Build. Launch.',
+    description:
+      'University students and young professionals gain accessible technical foundations, hands-on experience, mentorship, and connections that can accelerate their academic and early-career journeys.',
+    highlights: ['Career-ready AI skills', 'Hands-on project experience', 'Mentorship and peer networks'],
+    icon: GraduationCap,
+    images: [
+      { src: '/imgs/NP101300.JPG', alt: 'University students taking part in an interactive AI Caravan session' },
+      { src: '/imgs/1762092819429.jpg', alt: 'Young professionals collaborating during an AI activity' },
+      { src: '/imgs/042A3835.jpg', alt: 'University learners engaging with an AI Caravan speaker' },
+    ],
+  },
+  {
+    number: '03',
+    title: 'School Students',
+    eyebrow: 'Explore. Imagine. Create.',
+    description:
+      'Age-appropriate experiences introduce school students to AI through curiosity, creativity, and responsible use—helping the next generation see themselves as technology creators.',
+    highlights: ['Friendly AI foundations', 'Creative, guided activities', 'Responsible technology awareness'],
+    icon: School,
+    images: [
+      { src: '/imgs/535090103_122163416654794889_1806144149587838493_n.jpg', alt: 'School students discovering artificial intelligence with the AI Caravan' },
+      { src: '/imgs/622822301_122183508824794889_6556034636183667711_n.jpg', alt: 'Young learners participating in a practical technology activity' },
+      { src: '/imgs/623812727_122183754398794889_5179416784368487808_n.jpg', alt: 'School students learning together at an AI Caravan event' },
+    ],
+  },
+  {
+    number: '04',
+    title: 'AI Summit',
+    eyebrow: 'Connect. Exchange. Advance.',
+    description:
+      'The AI Summit brings together experts, educators, industry leaders, students, and policymakers to exchange knowledge, showcase applied innovation, and create new regional collaborations.',
+    highlights: ['Expert talks and panels', 'Cross-sector knowledge exchange', 'Regional collaboration'],
+    icon: Sparkles,
+    images: [
+      { src: '/imgs/IMG_1482.JPG', alt: 'The diverse IEEE Computer Society community gathered at the AI Summit' },
+      { src: '/imgs/IMG_1435 (1).JPG', alt: 'AI Caravan participants and leaders at the summit' },
+    ],
+  },
+];
+
 const About = () => {
   return (
-    <section id="about" className=" bg-white">
+    <section id="about" className="bg-white">
       <TopSection
         title="About the AI Caravan"
-        subtitle="Bridging the AI knowledge gap and fostering innovation through comprehensive training and practical application."
+        subtitle="Making practical, responsible AI knowledge accessible across generations, careers, and communities."
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
 
+      <div className="mx-auto max-w-7xl px-4 pb-8 pt-10 sm:px-6 lg:px-8">
+        <motion.div
+          className="relative mb-20 overflow-hidden rounded-3xl bg-[#071b33] px-6 py-10 text-white shadow-xl sm:px-10 lg:px-14"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#f9a31a]/20 blur-3xl" />
+          <div className="relative grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <div>
+              <p className="mb-3 text-sm font-bold uppercase tracking-[0.22em] text-[#f9a31a]">Our purpose</p>
+              <h2 className="text-3xl font-bold leading-tight sm:text-4xl">The right to knowledge and practical application in AI</h2>
+            </div>
+            <div className="space-y-4 text-base leading-7 text-slate-200 sm:text-lg">
+              <p>
+                The IEEE Computer Society AI Caravan is an outreach initiative that expands access to artificial intelligence knowledge while supporting human development and the 2030 Agenda principle of leaving no one behind.
+              </p>
+              <p>
+                Through hands-on training, expert talks, community events, and cross-border collaboration, the Caravan connects academic and professional communities and promotes practical, ethical AI solutions for locally relevant challenges.
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
-        {/* Executive Summary Section */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Executive Summary</h3>
-          <p className="text-lg text-gray-600">
-            The IEEE Computer Society AI Caravan is an outreach initiative designed to promote access to artificial intelligence (AI) knowledge as a means of advancing human development, aligning with the core value of the 2030 Agenda for Sustainable Development — “leaving no one behind.” The Caravan launched in February 2025 with its first edition (R8) held in Egypt with plans to extend across Europe, the Middle East, and Africa. The Caravan brought together universities, research institutions, and global AI experts to deliver talks and panel discussions, along with hands-on training. The theme behind the caravan is “The Right to Knowledge and Practical Application in AI,” which emphasizes addressing locally relevant challenges while promoting the responsible and ethical use of AI technologies.
-            <br /><br />
-            Over the course of 9 months, 30 events have been held in Egypt, Tunisia, Uganda, Greece, Jordan, and Kenya engaging more than 600 participants including students, faculty, professionals, and policymakers through in-person and hybrid sessions that addressed both technical foundations and domain-specific applications in areas such as healthcare, finance, accessibility, and cybersecurity.
-            <br /><br />
-            The R8 Edition will culminate in a leading international summit in December 2025 focused on applied and multidisciplinary research and technologies for AI. The initiative has strengthened ties between academic and professional communities, broadened awareness of AI’s practical uses, and laid the groundwork for long-term collaboration and future programs across Region 8 with efforts to expand to other regions across the world.
+        <div className="mb-10 text-center">
+          <p className="mb-3 text-sm font-bold uppercase tracking-[0.22em] text-[#e58a00]">Who we serve</p>
+          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">One caravan. Four connected communities.</h2>
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-gray-600">
+            Our programs meet people at different stages of their learning and professional journeys, creating an inclusive pathway into AI.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4">
-          <motion.div 
-            className="bg-gray-50 rounded-xl p-8 shadow-lg"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }}
-          >
-            <div className="flex items-center mb-6">
-              <div className="bg-[#f9a31a] p-3 rounded-lg">
-                <Briefcase className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 ml-4">Empowering Professionals</h3>
-            </div>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <Briefcase className="w-5 h-5 text-[#f9a31a] mt-1 mr-3" />
-                <span>Advanced AI training</span>
-              </li>
-              <li className="flex items-start">
-                <Briefcase className="w-5 h-5 text-[#f9a31a] mt-1 mr-3" />
-                <span>Practical AI project development</span>
-              </li>
-              <li className="flex items-start">
-                <Briefcase className="w-5 h-5 text-[#f9a31a] mt-1 mr-3" />
-                <span>Industry-focused implementation</span>
-              </li>
-            </ul>
-            <div className="flex flex-col md:flex-row gap-2 mb-4"></div>
-            <div className="max-w-7xl mx-auto px-4 mt-1 mr-3 sm:px-6 lg:px-8">
-              <div className="bg-[#f9a31a] p-1 rounded-lg">
-                <img src="/imgs/nu33.jpg" height={200} width={300} alt="AI Caravan" />
-              </div>
-            </div>
-            <div className="flex flex-col md:flex-row gap-2 mb-4"></div>
-            <div className="max-w-7xl mx-auto px-4 mt-1 mr-3 sm:px-6 lg:px-8">
-              <div className="bg-[#f9a31a] p-1 rounded-lg">
-                <img src="/imgs/g3.jpg" height={200} width={300} alt="AI Caravan" />
-              </div>
-            </div>
-          </motion.div>
+        <div className="space-y-10">
+          {audiences.map((audience, index) => {
+            const Icon = audience.icon;
+            const isReversed = index % 2 === 1;
 
-          <motion.div 
-            className="bg-gray-50 rounded-xl p-8 shadow-lg"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }}
-          >
-            <div className="flex items-center mb-6">
-              <div className="bg-[#f9a31a] p-3 rounded-lg">
-                <GraduationCap className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 ml-4">Educating Students</h3>
-            </div>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <GraduationCap className="w-5 h-5 text-[#f9a31a] mt-1 mr-3" />
-                <span>Fundamental AI concepts</span>
-              </li>
-              <li className="flex items-start">
-                <GraduationCap className="w-5 h-5 text-[#f9a31a] mt-1 mr-3" />
-                <span>Entrepreneurship skills development</span>
-              </li>
-              <li className="flex items-start">
-                <GraduationCap className="w-5 h-5 text-[#f9a31a] mt-1 mr-3" />
-                <span>GenZ Juniors competition participation</span>
-              </li>
-            </ul>
-            <div className="flex flex-col md:flex-row gap-2 mb-4"></div>
-            <div className="max-w-7xl mx-auto px-4 mt-1 mr-3 sm:px-6 lg:px-8">
-              <div className="bg-[#f9a31a] p-1 rounded-lg">
-                <img src="/imgs/p4.png" height={200} width={300} alt="AI Caravan" />
-              </div>
-            </div>
-            <div className="flex flex-col md:flex-row gap-2 mb-4"></div>
-            <div className="max-w-7xl mx-auto px-4 mt-1 mr-3 sm:px-6 lg:px-8">
-              <div className="bg-[#f9a31a] p-1 rounded-lg">
-                <img src="/imgs/j10.jpg" height={200} width={300} alt="AI Caravan" />
-              </div>
-            </div>
-          </motion.div>
+            return (
+              <motion.article
+                key={audience.title}
+                className="grid overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-[0_18px_55px_rgba(15,23,42,0.08)] lg:grid-cols-2"
+                initial={{ opacity: 0, y: 34 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.18 }}
+                transition={{ duration: 0.55 }}
+              >
+                <div className={`relative min-h-[320px] sm:min-h-[400px] ${isReversed ? 'lg:order-2' : ''}`}>
+                  <img
+                    src={audience.images[0].src}
+                    alt={audience.images[0].alt}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071b33]/80 via-transparent to-transparent" />
+                  <div className={`absolute bottom-4 left-4 right-4 grid gap-3 ${audience.images.length > 2 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                    {audience.images.slice(1).map((image) => (
+                      <img
+                        key={image.src}
+                        src={image.src}
+                        alt={image.alt}
+                        className="h-24 w-full rounded-xl border-2 border-white/90 object-cover shadow-lg sm:h-32"
+                        loading="lazy"
+                      />
+                    ))}
+                  </div>
+                </div>
 
-          <motion.div 
-            className="bg-gray-50 rounded-xl p-8 shadow-lg"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }}
-          >
-            <div className="flex items-center mb-6">
-              <div className="bg-[#f9a31a] p-3 rounded-lg">
-                <Rocket className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 ml-4">AI Summit</h3>
-            </div>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <Rocket className="w-5 h-5 text-[#f9a31a] mt-1 mr-3" />
-                <span>AI leaders</span>
-              </li>
-              <li className="flex items-start">
-                <Rocket className="w-5 h-5 text-[#f9a31a] mt-1 mr-3" />
-                <span>Knowledge exchange</span>
-              </li>
-              <li className="flex items-start">
-                <Rocket className="w-5 h-5 text-[#f9a31a] mt-1 mr-3" />
-                <span>Fostering collaboration</span>
-              </li>
-            </ul>
-            <div className="flex flex-col md:flex-row gap-2 mb-4"></div>
-            <div className="max-w-7xl mx-auto px-4 mt-1 mr-3 sm:px-6 lg:px-8">
-              <div className="bg-[#f9a31a] p-1 rounded-lg">
-                <img src="/imgs/p5.png" height={200} width={300} alt="AI Caravan" />
-              </div>
-            </div>
-            <div className="flex flex-col md:flex-row gap-2 mb-4"></div>
-            <div className="max-w-7xl mx-auto px-4 mt-1 mr-3 sm:px-6 lg:px-8">
-              <div className="bg-[#f9a31a] p-1 rounded-lg">
-                <img src="/imgs/p6.png" height={200} width={300} alt="AI Caravan" />
-              </div>
-            </div>
-          </motion.div>
+                <div className={`flex flex-col justify-center p-7 sm:p-10 lg:p-12 ${isReversed ? 'lg:order-1' : ''}`}>
+                  <div className="mb-6 flex items-center justify-between">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f9a31a] shadow-lg shadow-orange-200">
+                      <Icon className="h-7 w-7 text-white" aria-hidden="true" />
+                    </div>
+                    <span className="text-5xl font-black text-slate-200" aria-hidden="true">{audience.number}</span>
+                  </div>
+                  <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-[#d77e00]">{audience.eyebrow}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 sm:text-3xl">{audience.title}</h3>
+                  <p className="mt-4 leading-7 text-gray-600">{audience.description}</p>
+                  <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+                    {audience.highlights.map((highlight) => (
+                      <li key={highlight} className="flex items-start gap-2.5 text-sm font-semibold text-slate-700">
+                        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#f9a31a]" aria-hidden="true" />
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
       </div>
+
       <Team />
       <Outcomes />
     </section>
