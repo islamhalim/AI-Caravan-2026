@@ -34,12 +34,14 @@ const leaders:Person[] = [
 ];
 const experts:Person[]=[{name:'Ahmed Hazem El-Mahdy',title:'Dean of the School of Information Technology and Computer Science',affiliation:'Nile University, Egypt',photo:'mahdy.jpg'},{name:'Kostas Karpouzis',title:'Associate Professor',affiliation:'Panteion University of Social and Political Sciences, Greece', photo:'Kostas-Karpouzis.jpg'},{name:'Mousa Tawfiq',title:'Associate Professor of Artificial Intelligence and Computer Information Systems',affiliation:'University of Jordan',photo:'Mousa Al-Akhras.jpeg'},{name:'Batoul Rida Haidar',title:'Assistant Professor of Computer Science and AI',affiliation:'Coventry University, Egypt',photo:'BatoulHaidar.jpeg'}, {name:'Ayesha Afzal',title:'Researcher',affiliation:'Erlangen National High Performance Computing Center, Germany',photo:'Ayesha Afzaljpg.jpg'},{name:'Hadeer Ehab Barakat',title:'Assistant Professor',affiliation:'British University in Egypt',photo:'HadeerEhab.jpg'},{ name:'Zorica Bogdanovic',title:'Professor',affiliation:'University of Belgrade Faculty of Organizational Sciences, Serbia',photo:'zorica.jpg'},{name:'Khaled Khnissi',title:'Researcher in Robotics & AI',affiliation:'Ecole nationale supérieure des ingénieurs de Tunis - Ensit',photo:'khaled.jpg'},{name:'Atef El Fekky',title:'CEO',affiliation:'Digital Arrow, Egypt',photo:'Atef.webp'},{name:' AbdEl-Monem El-Sharkawy ',title:' chairman ',affiliation:' National Academy of Information Technology for Persons with Disabilities, Egypt ' ,photo:'AbdEl-Monem.jpg'},{name:' Mehdi SOUIER ',title:' Head of Intelligent Systems in Manufacturing (ISM)',affiliation:' Faculty of Technology, University of Tlemcen, Algeria' ,photo:'1778333851466.jpg'},{name:'Eslam Moussa',title:'CEO',affiliation:'TENET Information Technology, Egypt',photo:'IslamMousa.jpg'},{name:'Samar M. Nour',title:'Assistant Professor',affiliation:'Department of computer engineering at Badr University in Cairo (BUC), Egypt' ,photo:'samarnour.jpg'},{name:'Ruaa Al-Falluji',title:'Assistant Professor',affiliation:'College of Information Engineering, Al-Nahrain University, Iraq' ,photo:'Ruaa.jpeg'},{name:' Alex Watila ',title:' Deputy Director, ICT ',affiliation:'Kasneb, Kenya' ,photo:'1517700488238.jpg'},{name:'Oussema Fitouri',title:'Software Engineer',affiliation:'BNP Paribas, France',photo:'Oussema.jpg' } ];
 const excom:Person[]=[
-  {name:'Taieb jemal',photo:'taieb.jpg',affiliation:'Tunisia'},
   {name:'Amr Nabih Riyad',photo:'amrjpg.jpg',affiliation:'Egypt'},
+  {name:'Taieb jemal',photo:'taieb.jpg',affiliation:'Tunisia'},
+  {name:'Esraa Elhossieny',photo:'esraa.jpg',affiliation:'Egypt'},
+  {name:'Mohamed Zouari',photo:'zouri.jpg',affiliation:'Tunisia'},
   {name:'Mohamed SaidSalah Hassan',photo:'042A3056.jpg',affiliation:'Egypt'},
   {name:'Lina Bouallegue',photo:'zjeS2Eu.png',affiliation:'Tunisia'},
-  {name:'Mohamed Ali Ben Dhiab',photo:'Mohamed Ali Ben dhiab.jpg',affiliation:'Tunisia'},
   {name:'Mohannad Mohamed Abdelaziz',photo:'042A2607.jpg',affiliation:'Egypt'},
+  {name:'Mohamed Ali Ben Dhiab',photo:'Mohamed Ali Ben dhiab.jpg',affiliation:'Tunisia'},
   {name:'Mohamed Essam',photo:'essam.png',affiliation:'Egypt'},
   {name:'Hassan Ahmed El Sayed',photo:'f2bc8ae7-ee13-4fd3-9aea-dfb8558cbeb5.jpg',affiliation:'Egypt'},
   {name:'Rue Kemboi',photo:'Reu Kemboi (1).jpeg',affiliation:'Kenya'},
