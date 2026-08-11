@@ -45,8 +45,15 @@ const preferredExpertOrder = [
   'Batoul Rida Haidar',
   'Hadeer Ehab Barakat',
   'Mousa Tawfiq',
-  'Khaled Khnissi'
+  'Khaled Khnissi',
+  'Mehdi SOUIER',
+  'AbdEl-Monem El-Sharkawy',
+  'Atef El Fekky'
 ];
+const mehdiSouier = experts.find(expert => expert.name.trim() === 'Mehdi SOUIER');
+if (mehdiSouier) {
+  mehdiSouier.title = 'Full Professor and Head of Intelligent Systems in Manufacturing (ISM)';
+}
 experts.sort((first, second) => {
   const firstIndex = preferredExpertOrder.indexOf(first.name.trim());
   const secondIndex = preferredExpertOrder.indexOf(second.name.trim());
