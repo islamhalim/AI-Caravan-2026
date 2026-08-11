@@ -42,13 +42,12 @@ const preferredExpertOrder = [
   'Kostas Karpouzis',
   'Ayesha Afzal',
   'Zorica Bogdanovic',
+  'Mehdi SOUIER',
+  'AbdEl-Monem El-Sharkawy',
   'Batoul Rida Haidar',
   'Hadeer Ehab Barakat',
   'Mousa Tawfiq',
-  'Khaled Khnissi',
-  'Mehdi SOUIER',
-  'AbdEl-Monem El-Sharkawy',
-  'Atef El Fekky'
+  'Khaled Khnissi'
 ];
 const mehdiSouier = experts.find(expert => expert.name.trim() === 'Mehdi SOUIER');
 if (mehdiSouier) {
