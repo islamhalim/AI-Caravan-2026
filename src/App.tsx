@@ -72,6 +72,10 @@ experts.sort((first, second) => {
   if (secondIndex === -1) return -1;
   return firstIndex - secondIndex;
 });
+const advisoryBoardNames = ['David Koehler', 'Adel S. Elmaghraby', 'Celestine Iwendi', 'Erol Gelenbe'];
+const advisoryBoard = [...leaders, ...experts].filter(person => advisoryBoardNames.includes(person.name.trim()));
+const caravanLeaders = leaders.filter(person => !advisoryBoardNames.includes(person.name.trim()));
+const regionalExperts = experts.filter(person => !advisoryBoardNames.includes(person.name.trim()));
 const excom:Person[]=[
   {name:'Amr Nabih Riyad',photo:'amrjpg.jpg',affiliation:'Egypt'},
   {name:'Taieb jemal',photo:'taieb.jpg',affiliation:'Tunisia'},
@@ -228,8 +232,9 @@ function Team() {
   ];
   const kenyaTeam = [...country('Kenya'),committeeMember('Rue Kemboi'),committeeMember('Ann Mucheke')];
   const groups = [
-    ['Caravan Leaders',leaders],
-    ['Regional Experts',experts],
+    ['Caravan Leaders',caravanLeaders],
+    ['Advisory Board',advisoryBoard],
+    ['Regional Experts',regionalExperts],
     ['Representatives',representatives],
     ['Executive Committee',excom],
     ['Egypt Team',egyptTeam],
