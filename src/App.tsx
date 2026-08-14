@@ -119,7 +119,9 @@ const partners:{name:string;logo?:string}[] = [
   {name:'Amman Arab University',logo:'AAU.jpg'},
  {name:'Multimedia University of Kenya, Kenya',logo:'MMU.png'},
   {name:'Dedan Kimathi University of Technology',logo:'dekut.jpg'},
-  {name:'National Academy of Information Technology for Persons with Disabilities, Egypt',logo:'NAID.jpg'}
+  {name:'National Academy of Information Technology for Persons with Disabilities, Egypt',logo:'NAID.jpg'},
+  {name:'Centre for Multidisciplinary Research, Innovation and Collaboration (C-MRiC)',logo:'C-MRiC.png'},
+  {name:'IEEE ATIC (Afrotech Intelligence Congress)',logo:'ATIC.jpg'}
 ];
 
 function Header() {
