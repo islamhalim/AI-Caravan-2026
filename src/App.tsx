@@ -100,6 +100,9 @@ const tunisiaTeamAdditions:Person[] = [
   {name:'Imen othmen',title:'Community Management Team Member, AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Imen othmen.jpeg'}
 ];
 const representatives:Person[]=[{name:'Esraa Elhossieny',affiliation:'Egypt', photo:'esraa.jpg'},{name:'Mohamed Zouari',affiliation:'Tunisia', photo:'zouri.jpg'},{name:'John Mumo Nyerere',affiliation:'Kenya', photo:'John.jpg'},{name:'Qusai Mashriqi',affiliation:'Jordan', photo:'quisai.jpg'},{name:'Muaid F Ben Sassi',affiliation:'Libya', photo:'mouaid.png'},{name:'Tasnim Ashraf Khafagy',affiliation:'Kuwait', photo:'tasnim.png'},{name:'Aya AlAkhzami',affiliation:'Oman', photo:'aya-alakhzami.jpg'}];
+representatives.forEach(member => {
+  member.title = 'AI Caravan representative';
+});
 const eventPhotos=['733621678_122198744456794889_3539825857277880690_n.jpg','732985155_122198744690794889_2660884121770403882_n.jpg','733040960_122198744504794889_8525536481251118432_n.jpg'];
 const partners:{name:string;logo?:string}[] = [
   {name:'IEEE Computer Society',logo:'IEEE-CS_LogoTM-orange.png'},
