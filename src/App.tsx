@@ -208,11 +208,11 @@ function Team() {
     committeeMember('Mohamed SaidSalah Hassan'),
     committeeMember('Mohamed Essam'),
     committeeMember('Mohannad Mohamed Abdelaziz'),
+    committeeMember('Hassan Ahmed El Sayed'),
     {name:'Omar Ahmed',photo:'Omar Ahmed.jpg',affiliation:'Egypt'},
     {name:'Dareen Ahmed Sakr',photo:'dareen2 - Copy.jpg',affiliation:'Egypt'},
     {name:'Mohamed Kamal Said',photo:'kamal.jpg',affiliation:'Egypt'},
     {name:'Alaa Taha El Maria',photo:'dareen.jpg',affiliation:'Egypt'},
-    committeeMember('Hassan Ahmed El Sayed'),
     {name:'Mohamed Amir AbdelFatah',photo:'amir.jpg',affiliation:'Egypt'},
     {name:'Fatema Mohammad Mostafa',affiliation:'Egypt'}
   ];
