@@ -85,6 +85,20 @@ const excom:Person[]=[
   {name:'Rue Kemboi',photo:'Reu Kemboi (1).jpeg',affiliation:'Kenya'},
   {name:'Ann Mucheke',photo:'1756231029177.jpg',affiliation:'Kenya'}
 ];
+excom.forEach(member => {
+  member.affiliation = 'AI Caravan ExCom';
+});
+const tunisiaTeamAdditions:Person[] = [
+  {name:'Rania Foughali',title:'Secretary, AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Rania Foughali.jpg'},
+  {name:'Ghada Medimagh',title:'Program Manager, AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Ghada Medimagh.jpg'},
+  {name:'Arije Ben Abdel Hamid',title:'Community Management Manager, AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Arije Ben Abdel Hamid.jpg'},
+  {name:'Salma Ghedamsi',title:'Research & Innovation Manager, AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Salma Ghedamsi.jpg'},
+  {name:'Rima Fathallah',title:'Technical Team Manager, AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Rima Fathallah.jpg'},
+  {name:'Dhia Zrelli',title:'Partnerships & Sponsorships Manager, AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Dhia Zrelli.JPG'},
+  {name:'Firas Frigui',title:'Event Organization (Sahil Region), AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Firas Frigui.jpeg'},
+  {name:'Mohamed Amine Lbabda',title:'Video Editor, AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Mohamed Amine Lbabda.jpg'},
+  {name:'Imen othmen',title:'Community Management Team Member, AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Imen othmen.jpeg'}
+];
 const representatives:Person[]=[{name:'Esraa Elhossieny',affiliation:'Egypt', photo:'esraa.jpg'},{name:'Mohamed Zouari',affiliation:'Tunisia', photo:'zouri.jpg'},{name:'John Mumo Nyerere',affiliation:'Kenya', photo:'John.jpg'},{name:'Qusai Mashriqi',affiliation:'Jordan', photo:'quisai.jpg'},{name:'Muaid F Ben Sassi',affiliation:'Libya', photo:'mouaid.png'},{name:'Tasnim Ashraf Khafagy',affiliation:'Kuwait', photo:'tasnim.png'},{name:'Aya AlAkhzami',affiliation:'Oman', photo:'aya-alakhzami.jpg'}];
 const eventPhotos=['733621678_122198744456794889_3539825857277880690_n.jpg','732985155_122198744690794889_2660884121770403882_n.jpg','733040960_122198744504794889_8525536481251118432_n.jpg'];
 const partners:{name:string;logo?:string}[] = [
@@ -180,7 +194,47 @@ function Partners() { return <><PageHero eyebrow="Partners" title="Built through
 function Timeline() { const steps=[['15 August 2026','Caravan launch','Online learning begins across the six pathways.'],['August — November','Training + regional stops','Live learning, hands-on practice, and country events across Region 8.'],['November — December','Projects + recognition','Participants consolidate learning and share applied outcomes.'],['15 December 2026','2nd Region 8 AI Summit','The regional journey culminates in Egypt with leaders, showcases, and recognition.']]; return <><PageHero eyebrow="Timeline" title="Four months. One shared destination." copy="The 2026 Caravan moves from learning to local engagement and ends with a flagship regional summit."/><section className="section container timeline-layout"><div className="timeline">{steps.map(([date,title,copy],i)=><article key={title}><div className="time-marker"><span>{i+1}</span></div><div><time>{date}</time><h2>{title}</h2><p>{copy}</p></div></article>)}</div><aside className="timeline-photos"><ImageStory src="042A0089.jpg" alt="Young participants recognized at SEIS Tunisia" label="Engage"/><ImageStory src="042A9563.jpg" alt="Applied AI project presentation" label="Build"/><ImageStory src="042A1472.jpg" alt="Regional AI Caravan group with flags" label="Celebrate"/></aside></section><section className="date-banner"><div className="container"><CalendarDays/><div><span>Save the season</span><strong>15 Aug — 15 Dec 2026</strong></div><Link className="btn light-btn" to="/registration">Get updates</Link></div></section></> }
 
 function PeopleGrid({people}:{people:Person[]}) { return <div className="people-grid">{people.map(person=><article key={`${person.name}-${person.affiliation}`}><div className="person-photo"><Photo src={person.photo} alt={person.name}/></div><div className="person-info"><h3>{person.name}</h3>{person.title&&<p>{person.title}</p>}{person.affiliation&&<span>{person.affiliation}</span>}</div></article>)}</div> }
-function Team() { const country=(name:string)=>representatives.filter(x=>x.affiliation===name); const committeeMember=(name:string)=>excom.find(x=>x.name===name)!; const coreCountries=['Egypt','Tunisia','Jordan','Kenya']; const otherR8=representatives.filter(x=>!coreCountries.includes(x.affiliation||'')); const egyptTeam=[...country('Egypt'),committeeMember('Amr Nabih Riyad'),committeeMember('Mohamed SaidSalah Hassan'),committeeMember('Mohamed Essam'),committeeMember('Mohannad Mohamed Abdelaziz'),{name:'Mohamed Kamal Said',photo:'kamal.jpg',affiliation:'Egypt'},{name:'Omar Ahmed',photo:'Omar Ahmed.jpg',affiliation:'Egypt'},{name:'Dareen Ahmed Sakr',photo:'dareen2.jpg',affiliation:'Egypt'},{name:'Alaa Taha El Maria',photo:'dareen.jpg',affiliation:'Egypt'},committeeMember('Hassan Ahmed El Sayed'),{name:'Mohamed Amir AbdelFatah',photo:'amir.jpg',affiliation:'Egypt'},{name:'Fatema Mohammad Mostafa',affiliation:'Egypt'}]; const tunisiaTeam=[...country('Tunisia'),committeeMember('Taieb jemal'),committeeMember('Lina Bouallegue'),committeeMember('Mohamed Ali Ben Dhiab'),{name:'Amal Romdhani',photo:'amal.jpg',affiliation:'Tunisia'}]; const kenyaTeam=[...country('Kenya'),committeeMember('Rue Kemboi'),committeeMember('Ann Mucheke')]; const groups=[['Caravan Leaders',leaders],['Regional Experts',experts],['Representatives',representatives],['Executive Committee',excom],['Egypt Team',egyptTeam],['Tunisia Team',tunisiaTeam],['Jordan Team',country('Jordan')],['Kenya Team',kenyaTeam],['R8 – Other Countries',otherR8]] as [string,Person[]][]; return <><PageHero eyebrow="Our Team" title="The people moving the Caravan forward." copy="IEEE leaders, AI experts, regional representatives, and volunteer teams working together across Region 8."/><div className="team-nav container">{groups.map(([name])=><a href={`#${name.replace(/\s/g,'-').toLowerCase()}`} key={name}>{name}</a>)}</div>{groups.map(([name,people],i)=><section className={`team-section ${i%2?'soft':''}`} id={name.replace(/\s/g,'-').toLowerCase()} key={name}><div className="container"><div className="team-heading"><span className="eyebrow">{String(i+1).padStart(2,'0')}</span><h2>{name}</h2><span>{people.length} {people.length===1?'member':'members'}</span></div><PeopleGrid people={people}/></div></section>)}</> }
+function Team() {
+  const country = (name:string) => representatives.filter(person => person.affiliation === name);
+  const committeeMember = (name:string) => excom.find(person => person.name === name)!;
+  const coreCountries = ['Egypt','Tunisia','Jordan','Kenya'];
+  const otherR8 = representatives.filter(person => !coreCountries.includes(person.affiliation || ''));
+  const egyptTeam = [
+    ...country('Egypt'),
+    committeeMember('Amr Nabih Riyad'),
+    committeeMember('Mohamed SaidSalah Hassan'),
+    committeeMember('Mohamed Essam'),
+    committeeMember('Mohannad Mohamed Abdelaziz'),
+    {name:'Omar Ahmed',photo:'Omar Ahmed.jpg',affiliation:'Egypt'},
+    {name:'Dareen Ahmed Sakr',photo:'dareen2 - Copy.jpg',affiliation:'Egypt'},
+    {name:'Mohamed Kamal Said',photo:'kamal.jpg',affiliation:'Egypt'},
+    {name:'Alaa Taha El Maria',photo:'dareen.jpg',affiliation:'Egypt'},
+    committeeMember('Hassan Ahmed El Sayed'),
+    {name:'Mohamed Amir AbdelFatah',photo:'amir.jpg',affiliation:'Egypt'},
+    {name:'Fatema Mohammad Mostafa',affiliation:'Egypt'}
+  ];
+  const tunisiaTeam = [
+    ...country('Tunisia'),
+    committeeMember('Taieb jemal'),
+    committeeMember('Lina Bouallegue'),
+    committeeMember('Mohamed Ali Ben Dhiab'),
+    {name:'Amal Romdhani',photo:'amal.jpg',affiliation:'Tunisia'},
+    ...tunisiaTeamAdditions
+  ];
+  const kenyaTeam = [...country('Kenya'),committeeMember('Rue Kemboi'),committeeMember('Ann Mucheke')];
+  const groups = [
+    ['Caravan Leaders',leaders],
+    ['Regional Experts',experts],
+    ['Representatives',representatives],
+    ['Executive Committee',excom],
+    ['Egypt Team',egyptTeam],
+    ['Tunisia Team',tunisiaTeam],
+    ['Jordan Team',country('Jordan')],
+    ['Kenya Team',kenyaTeam],
+    ['R8 – Other Countries',otherR8]
+  ] as [string,Person[]][];
+  return <><PageHero eyebrow="Our Team" title="The people moving the Caravan forward." copy="IEEE leaders, AI experts, regional representatives, and volunteer teams working together across Region 8."/><div className="team-nav container">{groups.map(([name])=><a href={`#${name.replace(/\s/g,'-').toLowerCase()}`} key={name}>{name}</a>)}</div>{groups.map(([name,people],i)=><section className={`team-section ${i%2?'soft':''}`} id={name.replace(/\s/g,'-').toLowerCase()} key={name}><div className="container"><div className="team-heading"><span className="eyebrow">{String(i+1).padStart(2,'0')}</span><h2>{name}</h2><span>{people.length} {people.length===1?'member':'members'}</span></div><PeopleGrid people={people}/></div></section>)}</>
+}
 
 const registrationOpens = new Date('2026-08-14T21:00:00Z'); // 15 August, 12:00 AM Cairo
 const registrationDeadline = new Date('2026-08-31T20:59:59Z');
