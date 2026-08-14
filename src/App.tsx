@@ -112,8 +112,9 @@ const partners:{name:string;logo?:string}[] = [
   {name:'IEEE CS Region 8',logo:'ieee_r8_cs_rgb_ko.png'},
   {name:'University of Louisville — Digital Transformation Center',logo:'University-of-Louisville-Logo.jpg'},
   {name:'University of Greater Manchester — CIoTh',logo:'Uni-of-GM.png'},
+  {name:'Centre for Multidisciplinary Research, Innovation and Collaboration (C-MRiC)',logo:'C-MRiC.png'},
   {name:'Nile University',logo:'nu-removebg-preview (1).png'},
-   {name:'Coventry University branch in Egypt',logo:'The-Knowledge-Hub-and-cov.jpg'},
+   {name:'Coventry University branch in Egypt',logo:'tkh-cov-e1672836300212.jpg'},
   {name:'North American University Sfax',logo:'3qxvJTl.png'},
   {name:'ENETCom Sfax',logo:'logo.png'},
   {name:'University of Jordan',logo:'University of Jordan.png'},
@@ -121,7 +122,6 @@ const partners:{name:string;logo?:string}[] = [
  {name:'Multimedia University of Kenya, Kenya',logo:'MMU.png'},
   {name:'Dedan Kimathi University of Technology',logo:'dekut.jpg'},
   {name:'National Academy of Information Technology for Persons with Disabilities, Egypt',logo:'NAID.jpg'},
-  {name:'Centre for Multidisciplinary Research, Innovation and Collaboration (C-MRiC)',logo:'C-MRiC.png'},
   {name:'IEEE ATIC (Afrotech Intelligence Congress)',logo:'ATIC.jpg'}
 ];
 
