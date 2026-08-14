@@ -19,7 +19,7 @@ const videos: VideoItem[] = [
   
   },
   {
-    title: "George J. Proeller - IEEE CS DVP Chair",
+    title: "George J. Proeller - IEEE CS Distinguished Contributor Program Chair",
     file: "/videos/Proeller.mp4",
  
   },

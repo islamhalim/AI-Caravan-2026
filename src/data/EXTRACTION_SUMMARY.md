@@ -114,7 +114,7 @@ src/data/
 | **Speakers** | 27 | Full profiles with photos |
 | **Timeline Phases** | 5 | Complete program schedule |
 | **Navigation Items** | 9 | Main menu items |
-| **Organization Logos** | 5 | IEEE CS, GAC, DVP, R8, Caravan |
+| **Organization Logos** | 4 | IEEE CS, GAC, R8, Caravan |
 | **Strategic Partners** | 3 | NCAI, EG-CERT, AIC |
 | **Venues** | 2 | AUC & Nile University |
 | **Registration Options** | 2 | With/without accommodation |

@@ -42,9 +42,6 @@ const Header: React.FC = () => {
                 <img src="/imgs/mga_gac_color.png" alt="GAC" className="h-64 w-64 object-contain" />
               </div>
               <div className="absolute inset-0 flex items-center justify-center animate-logo-fade opacity-0" style={{ animationDelay: '9s' }}>
-                <img src="/imgs/dvp_logo-removebg-preview.png" alt="DVP" className="h-64 w-64 object-contain" />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center animate-logo-fade opacity-0" style={{ animationDelay: '12s' }}>
                 <img src="/imgs/ieee_r8_cs_rgb_ko.png" alt="R8" className="h-64 w-64 object-contain" />
               </div>
             </Link>

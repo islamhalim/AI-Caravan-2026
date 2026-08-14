@@ -57,7 +57,7 @@ const SummitInfo: React.FC = () => {
       img: "/imgs/george.webp",
       name: "George Proeller",
       title: "Chair",
-      affiliation: "IEEE Computer Society Distinguished Visitor Program (DVP)",
+      affiliation: "IEEE Computer Society Distinguished Contributor Program",
       link: "https://www.computer.org/profiles/george-proeller",
     },
     {

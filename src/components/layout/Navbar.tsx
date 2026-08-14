@@ -57,7 +57,6 @@ const Navbar = () => {
               <div className="hidden sm:flex items-center space-x-3">
                 <a href="https://www.computer.org/" target="_blank" rel="noreferrer"><img src="/imgs/IEEE-CS_LogoTM-orange.png" height={48} width={48} alt="IEEE CS" /></a>
                 <a href="https://www.computer.org/volunteering/boards-and-committees/member-geographic-activities" target="_blank" rel="noreferrer"><img src="/imgs/mga_gac_color.png" height={48} width={48} alt="GAC" /></a>
-                <a href="https://www.computer.org/communities/professional-chapters/distinguished-visitors-program" target="_blank" rel="noreferrer"><img src="/imgs/dvp_logo-removebg-preview.png" height={48} width={48} alt="DVP" /></a>
                 <a href="https://www.computer.org/volunteering/boards-and-committees/member-geographic-activities" target="_blank" rel="noreferrer"><img src="/imgs/ieee_r8_cs_rgb_ko.png" height={48} width={48} alt="R8" /></a>
               </div>
             </div>

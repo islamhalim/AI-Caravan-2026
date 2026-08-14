@@ -54,10 +54,6 @@ export const teamMembers: TeamMember[] = [
     photo: 'https://ieeecs-media.computer.org/wp-media/2018/04/28174547/Yiran-Chen.jpg'
   },
   {
-    name: 'Mrinal Karvir',
-    photo: 'https://wie.ieee.org/wp-content/uploads/Mrinal-Karvir-300x287.jpg'
-  },
-  {
     name: 'Sharon Kerrick',
     photo: 'https://engineering.louisville.edu/cybercenter/wp-content/uploads/sites/8/2024/01/kerrickSharon_headshot.jpg'
   },

@@ -3,7 +3,6 @@ import caravanlogo from '../components/imgs/caravanlogo.png';
 import cslogo from '../components/imgs/IEEE-CS_LogoTM-orange.png';
 import r8logo from '../components/imgs/ieee_r8_cs_rgb_ko.png';
 import gaclogo from '../components/imgs/mga_gac_color.png';
-import dvplogo from '../components/imgs/dvp_logo-removebg-preview.png';
 
 export interface NavItem {
   label: string;
@@ -47,12 +46,6 @@ export const logoLinks: LogoLink[] = [
     image: gaclogo,
     url: 'https://www.computer.org/volunteering/boards-and-committees/member-geographic-activities',
     alt: 'GAC'
-  },
-  {
-    name: 'dvp',
-    image: dvplogo,
-    url: 'https://www.computer.org/communities/professional-chapters/distinguished-visitors-program',
-    alt: 'DVP'
   },
   {
     name: 'r8',

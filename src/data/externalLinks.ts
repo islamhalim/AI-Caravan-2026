@@ -6,7 +6,6 @@ const teamProfileLinks:Record<string,string> = {
   'Yuhong Liu': 'https://www.computer.org/profiles/yuhong-liu',
   'Eric Berkowitz': 'https://www.linkedin.com/in/ericberkowitz',
   'Mohamed Rawidean': 'https://www.computer.org/profiles/mohamed-rawidean',
-  'Mrinal Karvir': 'https://www.computer.org/profiles/mrinal-karvir',
   'George J. Proeller': 'https://www.computer.org/profiles/george-proeller',
   'David Koehler': 'https://www.linkedin.com/in/davidakoehler',
   'Adel S. Elmaghraby': 'https://engineering.louisville.edu/faculty/adel-s-elmaghraby/',
@@ -66,7 +65,6 @@ export function getTeamProfileLink(name:string, affiliation?:string) {
 export const partnerLinks:Record<string,string> = {
   'IEEE Computer Society': 'https://www.computer.org/',
   'IEEE CS GAC': 'https://www.computer.org/volunteering/boards-and-committees/member-geographic-activities',
-  'IEEE CS DVP': 'https://www.computer.org/communities/professional-chapters/distinguished-visitors-program',
   'IEEE CS Region 8': 'https://www.computer.org/volunteering/boards-and-committees/member-geographic-activities#:~:text=R8%3A%20Islam%20Tharwat%20Abdel%20Halim',
   'University of Louisville — Digital Transformation Center': 'https://louisville.edu/digital-transformation',
   'University of Greater Manchester — CIoTh': 'https://ciothings.com/',
