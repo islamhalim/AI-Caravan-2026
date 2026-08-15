@@ -228,8 +228,7 @@ function Team() {
     committeeMember('Taieb jemal'),
     committeeMember('Lina Bouallegue'),
     committeeMember('Mohamed Ali Ben Dhiab'),
-    ...tunisiaTeamAdditions,
-    {name:'Amal Romdhani',photo:'amal.jpg',affiliation:'Tunisia'}
+    ...tunisiaTeamAdditions
   ];
   const kenyaTeam = [...country('Kenya'),committeeMember('Rue Kemboi'),committeeMember('Ann Mucheke')];
   const groups = [
