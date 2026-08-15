@@ -1,6 +1,12 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    function isRegistrationAdmin() {
+      return request.auth != null
+        && request.auth.token.email == 'islamhalim@ieee.org'
+        && request.auth.token.email_verified == true;
+    }
+
     match /registrations-2026/{emailId} {
       allow create: if !exists(/databases/$(database)/documents/registrations-2026/$(emailId))
         && request.time >= timestamp.value('2026-08-14T21:00:00Z')
@@ -18,7 +24,8 @@ service cloud.firestore {
           'AI Expert', 'AI Strategist', 'AI Engineer',
           'AI Viber', 'AI Administrator', 'AI Junior'
         ];
-      allow read, update, delete: if false;
+      allow read: if isRegistrationAdmin();
+      allow update, delete: if false;
     }
   }
 }

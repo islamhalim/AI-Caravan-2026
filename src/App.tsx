@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useState } from 'react';
 import { BrowserRouter, Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { db } from './components/config/firebase';
+import AdminRegistrations from './AdminRegistrations';
 import { getTeamProfileLink, partnerLinks } from './data/externalLinks';
 import {
   ArrowRight, Bot, Briefcase, CalendarDays, CheckCircle2,
@@ -258,4 +259,4 @@ function Contact() { return <><PageHero eyebrow="Contact" title="Let’s move pr
 
 function NotFound(){ return <section className="not-found"><span>404</span><h1>This stop is not on the route.</h1><Link className="btn primary" to="/">Return home</Link></section> }
 
-export default function App(){ return <BrowserRouter><Header/><main><Routes><Route path="/" element={<Home/>}/><Route path="/about" element={<About/>}/><Route path="/activities" element={<Activities/>}/><Route path="/highlights" element={<Highlights/>}/><Route path="/partners" element={<Partners/>}/><Route path="/timeline" element={<Timeline/>}/><Route path="/team" element={<Team/>}/><Route path="/registration" element={<Registration/>}/><Route path="/contact" element={<Contact/>}/><Route path="*" element={<NotFound/>}/></Routes></main><Footer/></BrowserRouter> }
+export default function App(){ return <BrowserRouter><Header/><main><Routes><Route path="/" element={<Home/>}/><Route path="/about" element={<About/>}/><Route path="/activities" element={<Activities/>}/><Route path="/highlights" element={<Highlights/>}/><Route path="/partners" element={<Partners/>}/><Route path="/timeline" element={<Timeline/>}/><Route path="/team" element={<Team/>}/><Route path="/registration" element={<Registration/>}/><Route path="/admin/registrations" element={<AdminRegistrations/>}/><Route path="/contact" element={<Contact/>}/><Route path="*" element={<NotFound/>}/></Routes></main><Footer/></BrowserRouter> }
