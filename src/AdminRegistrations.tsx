@@ -27,6 +27,51 @@ function timestampText(value?: Timestamp) {
   return value.toDate().toLocaleString('en-GB', { timeZone: 'Africa/Cairo' });
 }
 
+type ChartDatum = { label: string; value: number };
+
+function countBy(items: Registration[], field: 'track' | 'country'): ChartDatum[] {
+  const counts = new Map<string, number>();
+  items.forEach(item => {
+    const label = item[field] || 'Not specified';
+    counts.set(label, (counts.get(label) || 0) + 1);
+  });
+  return [...counts.entries()].map(([label, value]) => ({ label, value })).sort((a, b) => b.value - a.value || a.label.localeCompare(b.label));
+}
+
+function ageRangeData(items: Registration[]): ChartDatum[] {
+  const ranges = [
+    { label: 'Under 18', min: 0, max: 17 },
+    { label: '18–24', min: 18, max: 24 },
+    { label: '25–34', min: 25, max: 34 },
+    { label: '35–44', min: 35, max: 44 },
+    { label: '45–54', min: 45, max: 54 },
+    { label: '55+', min: 55, max: 200 },
+  ];
+  const counts = new Map(ranges.map(range => [range.label, 0]));
+  let unknown = 0;
+  const today = new Date();
+  items.forEach(item => {
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(item.dateOfBirth || '');
+    if (!match) { unknown += 1; return; }
+    const year = Number(match[1]);
+    const month = Number(match[2]);
+    const day = Number(match[3]);
+    let age = today.getFullYear() - year;
+    if (today.getMonth() + 1 < month || (today.getMonth() + 1 === month && today.getDate() < day)) age -= 1;
+    const range = ranges.find(value => age >= value.min && age <= value.max);
+    if (range) counts.set(range.label, (counts.get(range.label) || 0) + 1);
+    else unknown += 1;
+  });
+  const result = ranges.map(range => ({ label: range.label, value: counts.get(range.label) || 0 }));
+  if (unknown) result.push({ label: 'Not specified', value: unknown });
+  return result;
+}
+
+function BarChart({ title, subtitle, data, tone }: { title: string; subtitle: string; data: ChartDatum[]; tone: string }) {
+  const maximum = Math.max(...data.map(item => item.value), 1);
+  return <article className={`admin-chart ${tone}`}><div className="admin-chart-heading"><div><h2>{title}</h2><p>{subtitle}</p></div><strong>{data.reduce((sum, item) => sum + item.value, 0)}</strong></div><div className="admin-bars" role="img" aria-label={`${title}: ${data.map(item => `${item.label}, ${item.value}`).join('; ')}`}>{data.map(item => <div className="admin-bar" key={item.label}><div><span>{item.label}</span><b>{item.value}</b></div><div className="admin-bar-track"><i style={{ width: `${(item.value / maximum) * 100}%` }}/></div></div>)}</div></article>;
+}
+
 export default function AdminRegistrations() {
   const [user, setUser] = useState<User | null>(null);
   const [authReady, setAuthReady] = useState(false);
@@ -75,6 +120,9 @@ export default function AdminRegistrations() {
     const matchesEmail = emailStatus === 'All email statuses' || status === emailStatus;
     return matchesSearch && matchesTrack && matchesCountry && matchesEmail;
   }), [registrations, search, track, country, emailStatus]);
+  const trackStatistics = useMemo(() => countBy(registrations, 'track'), [registrations]);
+  const countryStatistics = useMemo(() => countBy(registrations, 'country'), [registrations]);
+  const ageStatistics = useMemo(() => ageRangeData(registrations), [registrations]);
 
   async function login() {
     setError('');
@@ -137,6 +185,7 @@ export default function AdminRegistrations() {
     <section className="admin-hero"><div className="container"><div><span className="eyebrow">Protected administration</span><h1>2026 Registrations</h1><p>Signed in securely as {user.email}</p></div><button className="btn secondary" onClick={() => signOut(auth)}><LogOut/> Sign out</button></div></section>
     <section className="admin-dashboard container">
       <div className="admin-metrics"><article><strong>{registrations.length}</strong><span>Total registrations</span></article><article><strong>{tracks.length}</strong><span>Selected tracks</span></article><article><strong>{countries.length}</strong><span>Countries represented</span></article><article><strong>{sentCount}</strong><span>Confirmations sent</span></article></div>
+      <div className="admin-charts"><BarChart title="Registrations by track" subtitle="Demand across the six learning pathways" data={trackStatistics} tone="orange"/><BarChart title="Registrations by country" subtitle="Geographic reach of current applications" data={countryStatistics} tone="blue"/><BarChart title="Participant age ranges" subtitle="Calculated from each submitted date of birth" data={ageStatistics} tone="cyan"/></div>
       <div className="admin-toolbar"><label className="admin-search"><Search/><input value={search} onChange={event => setSearch(event.target.value)} placeholder="Search name, email, phone or affiliation" aria-label="Search registrations"/></label><select value={track} onChange={event => setTrack(event.target.value)} aria-label="Filter by track"><option>All tracks</option>{tracks.map(value => <option key={value}>{value}</option>)}</select><select value={country} onChange={event => setCountry(event.target.value)} aria-label="Filter by country"><option>All countries</option>{countries.map(value => <option key={value}>{value}</option>)}</select><select value={emailStatus} onChange={event => setEmailStatus(event.target.value)} aria-label="Filter by confirmation email status"><option>All email statuses</option><option value="sent">sent</option><option value="error">error</option><option value="not sent">not sent</option></select><button className="btn secondary" onClick={loadRegistrations} disabled={loading}><RefreshCw className={loading ? 'spin' : ''}/> Refresh</button><button className="btn primary" onClick={exportExcel} disabled={!filtered.length}><Download/> Download Excel</button></div>
       {error && <div className="form-message error">{error}</div>}
       <div className="admin-results"><span>{filtered.length} of {registrations.length} registrations</span>{filtered.length !== registrations.length && <button onClick={() => { setSearch(''); setTrack('All tracks'); setCountry('All countries'); setEmailStatus('All email statuses'); }}>Clear filters</button>}</div>
