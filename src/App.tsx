@@ -84,16 +84,16 @@ const advisoryBoard = [...leaders, ...experts].filter(person => advisoryBoardNam
 const caravanLeaders = leaders.filter(person => !advisoryBoardNames.includes(person.name.trim()));
 const regionalExperts = experts.filter(person => !advisoryBoardNames.includes(person.name.trim()));
 const excom:Person[]=[
-  {name:'Amr Nabih Riyad',title:'Content & Documentation',photo:'amrjpg.jpg',affiliation:'Egypt'},
-  {name:'Taieb jemal',title:'Training Program',photo:'taieb.jpg',affiliation:'Tunisia'},
+  {name:'Amr Nabih Riyad',title:'Content & Documentation Lead',photo:'amrjpg.jpg',affiliation:'Egypt'},
+  {name:'Taieb jemal',title:'Training Program Lead',photo:'taieb.jpg',affiliation:'Tunisia'},
   {name:'Esraa Elhossieny',photo:'esraa.jpg',affiliation:'Egypt'},
-  {name:'Mohamed Zouari',title:'Media',photo:'zouri.jpg',affiliation:'Tunisia'},
-  {name:'Mohamed SaidSalah Hassan',title:'Fund & Partnership',photo:'042A3056.jpg',affiliation:'Egypt'},
-  {name:'Lina Bouallegue',title:'Awards & Recognition',photo:'zjeS2Eu.png',affiliation:'Tunisia'},
+  {name:'Mohamed Zouari',title:'Media Lead',photo:'zouri.jpg',affiliation:'Tunisia'},
+  {name:'Mohamed SaidSalah Hassan',title:'Partnerships & Sponsorships Lead',photo:'042A3056.jpg',affiliation:'Egypt'},
+  {name:'Lina Bouallegue',title:'Awards & Recognition Lead',photo:'zjeS2Eu.png',affiliation:'Tunisia'},
   {name:'Mohannad Mohamed Abdelaziz',photo:'042A2607.jpg',affiliation:'Egypt'},
-  {name:'Mohamed Ali Ben Dhiab',title:'Webmaster',photo:'Mohamed Ali Ben dhiab.jpg',affiliation:'Tunisia'},
+  {name:'Mohamed Ali Ben Dhiab',title:'Webmaster Lead',photo:'Mohamed Ali Ben dhiab.jpg',affiliation:'Tunisia'},
   {name:'Mohamed Essam',photo:'essam.png',affiliation:'Egypt'},
-  {name:'Hassan Ahmed El Sayed',title:'Marketing',photo:'f2bc8ae7-ee13-4fd3-9aea-dfb8558cbeb5.jpg',affiliation:'Egypt'},
+  {name:'Hassan Ahmed El Sayed',title:'Marketing Lead',photo:'f2bc8ae7-ee13-4fd3-9aea-dfb8558cbeb5.jpg',affiliation:'Egypt'},
   {name:'Rue Kemboi',photo:'Reu Kemboi (1).jpeg',affiliation:'Kenya'},
   {name:'Ann Mucheke',photo:'1756231029177.jpg',affiliation:'Kenya'}
 ];
