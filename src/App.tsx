@@ -69,6 +69,7 @@ const ruaaAlFalluji = experts.find(expert => expert.name.trim() === 'Ruaa Al-Fal
 if (ruaaAlFalluji) {
   ruaaAlFalluji.title = 'Professor';
   ruaaAlFalluji.affiliation = 'Department of Automation and Artificial Intelligence Engineering, College of Information Engineering, Al-Nahrain University, Iraq';
+  ruaaAlFalluji.photo = '8013c5bc-02b7-49cc-b0f5-1038420ca89f.jpg';
 }
 experts.sort((first, second) => {
   const firstIndex = preferredExpertOrder.indexOf(first.name.trim());
