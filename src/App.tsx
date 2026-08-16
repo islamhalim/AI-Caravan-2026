@@ -84,16 +84,16 @@ const advisoryBoard = [...leaders, ...experts].filter(person => advisoryBoardNam
 const caravanLeaders = leaders.filter(person => !advisoryBoardNames.includes(person.name.trim()));
 const regionalExperts = experts.filter(person => !advisoryBoardNames.includes(person.name.trim()));
 const excom:Person[]=[
-  {name:'Amr Nabih Riyad',photo:'amrjpg.jpg',affiliation:'Egypt'},
-  {name:'Taieb jemal',photo:'taieb.jpg',affiliation:'Tunisia'},
+  {name:'Amr Nabih Riyad',title:'Content & Documentation',photo:'amrjpg.jpg',affiliation:'Egypt'},
+  {name:'Taieb jemal',title:'Training Program',photo:'taieb.jpg',affiliation:'Tunisia'},
   {name:'Esraa Elhossieny',photo:'esraa.jpg',affiliation:'Egypt'},
-  {name:'Mohamed Zouari',photo:'zouri.jpg',affiliation:'Tunisia'},
-  {name:'Mohamed SaidSalah Hassan',photo:'042A3056.jpg',affiliation:'Egypt'},
-  {name:'Lina Bouallegue',photo:'zjeS2Eu.png',affiliation:'Tunisia'},
+  {name:'Mohamed Zouari',title:'Media',photo:'zouri.jpg',affiliation:'Tunisia'},
+  {name:'Mohamed SaidSalah Hassan',title:'Fund & Partnership',photo:'042A3056.jpg',affiliation:'Egypt'},
+  {name:'Lina Bouallegue',title:'Awards & Recognition',photo:'zjeS2Eu.png',affiliation:'Tunisia'},
   {name:'Mohannad Mohamed Abdelaziz',photo:'042A2607.jpg',affiliation:'Egypt'},
-  {name:'Mohamed Ali Ben Dhiab',photo:'Mohamed Ali Ben dhiab.jpg',affiliation:'Tunisia'},
+  {name:'Mohamed Ali Ben Dhiab',title:'Webmaster',photo:'Mohamed Ali Ben dhiab.jpg',affiliation:'Tunisia'},
   {name:'Mohamed Essam',photo:'essam.png',affiliation:'Egypt'},
-  {name:'Hassan Ahmed El Sayed',photo:'f2bc8ae7-ee13-4fd3-9aea-dfb8558cbeb5.jpg',affiliation:'Egypt'},
+  {name:'Hassan Ahmed El Sayed',title:'Marketing',photo:'f2bc8ae7-ee13-4fd3-9aea-dfb8558cbeb5.jpg',affiliation:'Egypt'},
   {name:'Rue Kemboi',photo:'Reu Kemboi (1).jpeg',affiliation:'Kenya'},
   {name:'Ann Mucheke',photo:'1756231029177.jpg',affiliation:'Kenya'}
 ];
@@ -213,15 +213,16 @@ function PeopleGrid({people}:{people:Person[]}) { return <div className="people-
 function Team() {
   const country = (name:string) => representatives.filter(person => person.affiliation === name);
   const committeeMember = (name:string) => excom.find(person => person.name === name)!;
+  const committeeMemberForLocalTeam = (name:string) => ({...committeeMember(name), title: undefined});
   const coreCountries = ['Egypt','Tunisia','Jordan','Kenya'];
   const otherR8 = representatives.filter(person => !coreCountries.includes(person.affiliation || ''));
   const egyptTeam = [
     ...country('Egypt'),
-    committeeMember('Amr Nabih Riyad'),
-    committeeMember('Mohamed SaidSalah Hassan'),
-    committeeMember('Mohamed Essam'),
-    committeeMember('Mohannad Mohamed Abdelaziz'),
-    committeeMember('Hassan Ahmed El Sayed'),
+    committeeMemberForLocalTeam('Amr Nabih Riyad'),
+    committeeMemberForLocalTeam('Mohamed SaidSalah Hassan'),
+    committeeMemberForLocalTeam('Mohamed Essam'),
+    committeeMemberForLocalTeam('Mohannad Mohamed Abdelaziz'),
+    committeeMemberForLocalTeam('Hassan Ahmed El Sayed'),
     {name:'Omar Ahmed',photo:'Omar Ahmed.jpg',affiliation:'Egypt'},
     {name:'Dareen Ahmed Sakr',photo:'dareen2 - Copy.jpg',affiliation:'Egypt'},
     {name:'Mohamed Kamal Said',photo:'kamal.jpg',affiliation:'Egypt'},
@@ -231,12 +232,12 @@ function Team() {
   ];
   const tunisiaTeam = [
     ...country('Tunisia'),
-    committeeMember('Taieb jemal'),
-    committeeMember('Lina Bouallegue'),
-    committeeMember('Mohamed Ali Ben Dhiab'),
+    committeeMemberForLocalTeam('Taieb jemal'),
+    committeeMemberForLocalTeam('Lina Bouallegue'),
+    committeeMemberForLocalTeam('Mohamed Ali Ben Dhiab'),
     ...tunisiaTeamAdditions
   ];
-  const kenyaTeam = [...country('Kenya'),committeeMember('Rue Kemboi'),committeeMember('Ann Mucheke')];
+  const kenyaTeam = [...country('Kenya'),committeeMemberForLocalTeam('Rue Kemboi'),committeeMemberForLocalTeam('Ann Mucheke')];
   const groups = [
     ['Caravan Leaders',caravanLeaders],
     ['Advisory Board',advisoryBoard],
