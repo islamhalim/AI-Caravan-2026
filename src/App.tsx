@@ -65,6 +65,11 @@ const mehdiSouier = experts.find(expert => expert.name.trim() === 'Mehdi SOUIER'
 if (mehdiSouier) {
   mehdiSouier.title = 'Full Professor and Head of Intelligent Systems in Manufacturing (ISM)';
 }
+const ruaaAlFalluji = experts.find(expert => expert.name.trim() === 'Ruaa Al-Falluji');
+if (ruaaAlFalluji) {
+  ruaaAlFalluji.title = 'Professor';
+  ruaaAlFalluji.affiliation = 'Department of Automation and Artificial Intelligence Engineering, College of Information Engineering, Al-Nahrain University, Iraq';
+}
 experts.sort((first, second) => {
   const firstIndex = preferredExpertOrder.indexOf(first.name.trim());
   const secondIndex = preferredExpertOrder.indexOf(second.name.trim());
