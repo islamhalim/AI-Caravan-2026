@@ -40,12 +40,12 @@ experts.push(
   {name:'Reyhan Aydogan',title:'Associate Professor in Artificial Intelligence and Data Engineering',affiliation:'Ozyegin University, Turkey',photo:'reyhan.jpg'},
   {name:'Seifedine Kadry',title:'Professor of Data Science',affiliation:'Beirut Arab University, Lebanon',photo:'seifedine-kadry.jpg'},
   {name:'Roua TOUIHRI',title:'Change Management Board / Enterprise Architect',affiliation:'Elee, Paris, France',photo:'Roua.jpg'},
-  {name:'Hironori Washizaki',title:'Professor and Associate Dean of the Research Promotion Division at Waseda University, Japan.',photo:'IEEE_CS_Hironori_Washizaki_headshot.jpg'},
-  {name:'David Alan Grier',title:'Associate Professor Emeritus of International Science and Technology Policy Emeriti Faculty at George Washington University, USA',photo:'David-Alan-Grier-profile-01.webp'},
-  {name:'Katarina Trojachanec',title:'Associate Professor at Faculty of Computer Science and Engineering, Ss. Cyril and Methodius University, Skopje, N. Macedonia',photo:'doc._d-r_katarina_trojachanec_dineva_20698.jpg'},
-  {name:'Sean Bin Yang',title:'Assistant Professor in the Department of Computer Science at Aalborg University, Denmark',photo:'BinYang.jpg'},
-  {name:'Thamir Qadah',title:'Assistant Professor in the Department of Computer and Networks Engineering College of Computing Umm Al-Qura University, KSA.',photo:'tmqadah.webp'},
-  {name:'Caroline Ling Li',title:"Professor in Biomedical Engineering at City St George's, University of London, UK.",photo:'caroline-li-200x267.jpg'}
+  {name:'Hironori Washizaki',title:'Professor and Associate Dean of the Research Promotion Division',affiliation:'Waseda University, Japan',photo:'IEEE_CS_Hironori_Washizaki_headshot.jpg'},
+  {name:'David Alan Grier',title:'Associate Professor Emeritus of International Science and Technology Policy Emeriti Faculty',affiliation:'George Washington University, US',photo:'David-Alan-Grier-profile-01.webp'},
+  {name:'Katarina Trojachanec',title:'Associate Professor at Faculty of Computer Science and Engineering',affiliation:'Ss. Cyril and Methodius University, Skopje, N. Macedonia',photo:'doc._d-r_katarina_trojachanec_dineva_20698.jpg'},
+  {name:'Sean Bin Yang',title:'Assistant Professor in the Department of Computer Science',affiliation:'Aalborg University, Denmark',photo:'BinYang.jpg'},
+  {name:'Thamir Qadah',title:'Assistant Professor in the Department of Computer and Networks Engineering College of Computing',affiliation:'Umm Al-Qura University, KSA',photo:'tmqadah.webp'},
+  {name:'Caroline Ling Li',title:'Professor in Biomedical Engineering',affiliation:"City St George's, University of London, UK",photo:'caroline-li-200x267.jpg'}
 );
 const preferredExpertOrder = [
   'Tarek Khalil',
@@ -62,12 +62,12 @@ const preferredExpertOrder = [
   'Caroline Ling Li',
   'Seifedine Kadry',
   'Mehdi SOUIER',
+  'Mousa Tawfiq',
   'Sean Bin Yang',
   'Thamir Qadah',
   'AbdEl-Monem El-Sharkawy',
   'Batoul Rida Haidar',
   'Hadeer Ehab Barakat',
-  'Mousa Tawfiq',
   'Roua TOUIHRI',
   'Khaled Khnissi'
 ];
