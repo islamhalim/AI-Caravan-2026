@@ -36,6 +36,12 @@ const teamProfileLinks:Record<string,string> = {
   'Ruaa Al-Falluji': 'https://www.linkedin.com/in/ruaa-al-falluji-b215b4354/',
   'Alex Watila': 'https://www.linkedin.com/in/awatila/',
   'Oussema Fitouri': 'https://www.linkedin.com/in/oussema-fitouri-49424b140/',
+  'Hironori Washizaki': 'http://www.washi.cs.waseda.ac.jp/washizaki/',
+  'David Alan Grier': 'https://elliott.gwu.edu/david-grier',
+  'Katarina Trojachanec': 'https://oldsite.finki.ukim.mk/en/staff/katarina-trojachanec',
+  'Sean Bin Yang': 'https://vbn.aau.dk/en/persons/sean-bin-yang-2/',
+  'Thamir Qadah': 'https://uqu.edu.sa/en/tmqadah/App/CV',
+  'Caroline Ling Li': 'https://researchcentres.citystgeorges.ac.uk/biomedical-engineering/people',
 };
 
 const affiliationLinks:Array<[string,string]> = [

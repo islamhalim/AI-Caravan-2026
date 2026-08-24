@@ -39,7 +39,13 @@ experts.push(
   {name:'Ahmed Hassan Yousef',title:'President',affiliation:'Elsewedy University of Technology (SUT), Egypt',photo:'SUTech-Dr.-Ahmed-Hassan-Yousef-Square.jpg'},
   {name:'Reyhan Aydogan',title:'Associate Professor in Artificial Intelligence and Data Engineering',affiliation:'Ozyegin University, Turkey',photo:'reyhan.jpg'},
   {name:'Seifedine Kadry',title:'Professor of Data Science',affiliation:'Beirut Arab University, Lebanon',photo:'seifedine-kadry.jpg'},
-  {name:'Roua TOUIHRI',title:'Change Management Board / Enterprise Architect',affiliation:'Elee, Paris, France',photo:'Roua.jpg'}
+  {name:'Roua TOUIHRI',title:'Change Management Board / Enterprise Architect',affiliation:'Elee, Paris, France',photo:'Roua.jpg'},
+  {name:'Hironori Washizaki',title:'Professor and Associate Dean of the Research Promotion Division at Waseda University, Japan.',photo:'IEEE_CS_Hironori_Washizaki_headshot.jpg'},
+  {name:'David Alan Grier',title:'Associate Professor Emeritus of International Science and Technology Policy Emeriti Faculty at George Washington University, USA',photo:'David-Alan-Grier-profile-01.webp'},
+  {name:'Katarina Trojachanec',title:'Associate Professor at Faculty of Computer Science and Engineering, Ss. Cyril and Methodius University, Skopje, N. Macedonia',photo:'doc._d-r_katarina_trojachanec_dineva_20698.jpg'},
+  {name:'Sean Bin Yang',title:'Assistant Professor in the Department of Computer Science at Aalborg University, Denmark',photo:'BinYang.jpg'},
+  {name:'Thamir Qadah',title:'Assistant Professor in the Department of Computer and Networks Engineering College of Computing Umm Al-Qura University, KSA.',photo:'tmqadah.webp'},
+  {name:'Caroline Ling Li',title:"Professor in Biomedical Engineering at City St George's, University of London, UK.",photo:'caroline-li-200x267.jpg'}
 );
 const preferredExpertOrder = [
   'Tarek Khalil',
@@ -49,11 +55,15 @@ const preferredExpertOrder = [
   'Ahmed Hassan Yousef',
   'Ahmed Hazem El-Mahdy',
   'Kostas Karpouzis',
+  'Katarina Trojachanec',
   'Reyhan Aydogan',
   'Ayesha Afzal',
   'Zorica Bogdanovic',
+  'Caroline Ling Li',
   'Seifedine Kadry',
   'Mehdi SOUIER',
+  'Sean Bin Yang',
+  'Thamir Qadah',
   'AbdEl-Monem El-Sharkawy',
   'Batoul Rida Haidar',
   'Hadeer Ehab Barakat',
@@ -79,7 +89,7 @@ experts.sort((first, second) => {
   if (secondIndex === -1) return -1;
   return firstIndex - secondIndex;
 });
-const advisoryBoardNames = ['David Koehler', 'Adel S. Elmaghraby', 'Celestine Iwendi', 'Erol Gelenbe'];
+const advisoryBoardNames = ['David Koehler', 'Adel S. Elmaghraby', 'Celestine Iwendi', 'Erol Gelenbe', 'Hironori Washizaki', 'David Alan Grier'];
 const advisoryBoard = [...leaders, ...experts].filter(person => advisoryBoardNames.includes(person.name.trim()));
 const caravanLeaders = leaders.filter(person => !advisoryBoardNames.includes(person.name.trim()));
 const regionalExperts = experts.filter(person => !advisoryBoardNames.includes(person.name.trim()));
@@ -92,10 +102,11 @@ const excom:Person[]=[
   {name:'Lina Bouallegue',title:'Awards & Recognition Lead',photo:'zjeS2Eu.png',affiliation:'Tunisia'},
   {name:'Mohannad Mohamed Abdelaziz',photo:'042A2607.jpg',affiliation:'Egypt'},
   {name:'Mohamed Ali Ben Dhiab',title:'Webmaster Lead',photo:'Mohamed Ali Ben dhiab.jpg',affiliation:'Tunisia'},
-  {name:'Mohamed Essam',photo:'essam.png',affiliation:'Egypt'},
+  {name:'Mohamed Essam',title:'Communication Lead',photo:'essam.png',affiliation:'Egypt'},
   {name:'Hassan Ahmed El Sayed',title:'Marketing Lead',photo:'f2bc8ae7-ee13-4fd3-9aea-dfb8558cbeb5.jpg',affiliation:'Egypt'},
   {name:'Rue Kemboi',photo:'Reu Kemboi (1).jpeg',affiliation:'Kenya'},
-  {name:'Ann Mucheke',photo:'1756231029177.jpg',affiliation:'Kenya'}
+  {name:'Ann Mucheke',photo:'1756231029177.jpg',affiliation:'Kenya'},
+  {name:'Muaid F Ben Sassi',title:'Industry Engagement Lead',photo:'6ed403ba-0cb4-495a-83dd-0ab8c081b9b7.jpg',affiliation:'Libya'}
 ];
 excom.forEach(member => {
   member.affiliation = 'AI Caravan ExCom';
@@ -111,7 +122,7 @@ const tunisiaTeamAdditions:Person[] = [
   {name:'Mohamed Amine Lbabda',title:'Video Editor, AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Mohamed Amine Lbabda.jpg'},
   {name:'Imen othmen',title:'Community Management Team Member, AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Imen othmen.jpeg'}
 ];
-const representatives:Person[]=[{name:'Esraa Elhossieny',affiliation:'Egypt', photo:'esraa.jpg'},{name:'Mohamed Zouari',affiliation:'Tunisia', photo:'zouri.jpg'},{name:'John Mumo Nyerere',affiliation:'Kenya', photo:'John.jpg'},{name:'Qusai Mashriqi',affiliation:'Jordan', photo:'quisai.jpg'},{name:'Muaid F Ben Sassi',affiliation:'Libya', photo:'mouaid.png'},{name:'Simenya Jonathan',affiliation:'Rwanda',photo:'1719237057326.jpg'},{name:'Tasnim Ashraf Khafagy',affiliation:'Kuwait', photo:'tasnim.png'},{name:'Aya AlAkhzami',affiliation:'Oman', photo:'aya-alakhzami.jpg'}];
+const representatives:Person[]=[{name:'Esraa Elhossieny',affiliation:'Egypt', photo:'esraa.jpg'},{name:'Mohamed Zouari',affiliation:'Tunisia', photo:'zouri.jpg'},{name:'John Mumo Nyerere',affiliation:'Kenya', photo:'John.jpg'},{name:'Qusai Mashriqi',affiliation:'Jordan', photo:'quisai.jpg'},{name:'Muaid Bensasi',affiliation:'Libya', photo:'6ed403ba-0cb4-495a-83dd-0ab8c081b9b7.jpg'},{name:'Simenya Jonathan',affiliation:'Rwanda',photo:'1719237057326.jpg'},{name:'Tasnim Ashraf Khafagy',affiliation:'Kuwait', photo:'tasnim.png'},{name:'Aya AlAkhzami',affiliation:'Oman', photo:'aya-alakhzami.jpg'}];
 representatives.forEach(member => {
   member.title = 'AI Caravan representative';
 });
