@@ -66,11 +66,12 @@ const preferredExpertOrder = [
   'Mehdi SOUIER',
   'Mousa Tawfiq',
   'Sean Bin Yang',
-  'Thamir Qadah',
-  'AbdEl-Monem El-Sharkawy',
-  'Batoul Rida Haidar',
   'Hadeer Ehab Barakat',
+  'Thamir Qadah',
+  'Batoul Rida Haidar',
+  'Samar M. Nour',
   'Roua TOUIHRI',
+  'AbdEl-Monem El-Sharkawy',
   'Khaled Khnissi'
 ];
 const mehdiSouier = experts.find(expert => expert.name.trim() === 'Mehdi SOUIER');
