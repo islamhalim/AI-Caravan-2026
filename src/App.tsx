@@ -43,6 +43,7 @@ experts.push(
   {name:'Hironori Washizaki',title:'Professor and Associate Dean of the Research Promotion Division',affiliation:'Waseda University, Japan',photo:'IEEE_CS_Hironori_Washizaki_headshot.jpg'},
   {name:'David Alan Grier',title:'Associate Professor Emeritus of International Science and Technology Policy Emeriti Faculty',affiliation:'George Washington University, US',photo:'David-Alan-Grier-profile-01.webp'},
   {name:'Katarina Trojachanec',title:'Associate Professor at Faculty of Computer Science and Engineering',affiliation:'Ss. Cyril and Methodius University, Skopje, N. Macedonia',photo:'doc._d-r_katarina_trojachanec_dineva_20698.jpg'},
+  {name:'Walid Al-Atabany',title:'Associate Dean for UG Programs & Director of Centre for Informatics (CIS)',affiliation:'Nile University, Egypt',photo:'whatsapp_image_2022-12-20_at_11.46.00_pm.jpeg'},
   {name:'Sean Bin Yang',title:'Assistant Professor in the Department of Computer Science',affiliation:'Aalborg University, Denmark',photo:'BinYang.jpg'},
   {name:'Thamir Qadah',title:'Assistant Professor in the Department of Computer and Networks Engineering College of Computing',affiliation:'Umm Al-Qura University, KSA',photo:'tmqadah.webp'},
   {name:'Caroline Ling Li',title:'Professor in Biomedical Engineering',affiliation:"City St George's, University of London, UK",photo:'caroline-li-200x267.jpg'}
@@ -57,6 +58,7 @@ const preferredExpertOrder = [
   'Kostas Karpouzis',
   'Katarina Trojachanec',
   'Reyhan Aydogan',
+  'Walid Al-Atabany',
   'Ayesha Afzal',
   'Zorica Bogdanovic',
   'Caroline Ling Li',

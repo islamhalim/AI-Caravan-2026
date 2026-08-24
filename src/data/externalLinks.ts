@@ -42,6 +42,7 @@ const teamProfileLinks:Record<string,string> = {
   'Sean Bin Yang': 'https://vbn.aau.dk/en/persons/sean-bin-yang-2/',
   'Thamir Qadah': 'https://uqu.edu.sa/en/tmqadah/App/CV',
   'Caroline Ling Li': 'https://researchcentres.citystgeorges.ac.uk/biomedical-engineering/people',
+  'Walid Al-Atabany': 'https://nu.edu.eg/academic-staff/prof-walid-al-atabany',
 };
 
 const affiliationLinks:Array<[string,string]> = [
