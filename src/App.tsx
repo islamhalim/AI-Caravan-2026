@@ -66,17 +66,23 @@ const preferredExpertOrder = [
   'Mehdi SOUIER',
   'Mousa Tawfiq',
   'Sean Bin Yang',
-  'Hadeer Ehab Barakat',
   'Thamir Qadah',
+  'Hadeer Ehab Barakat',
   'Batoul Rida Haidar',
   'Samar M. Nour',
+  'Atef El Fekky',
+  'Khaled Khnissi',
+  'Eslam Moussa',
   'Roua TOUIHRI',
-  'AbdEl-Monem El-Sharkawy',
-  'Khaled Khnissi'
+  'AbdEl-Monem El-Sharkawy'
 ];
 const mehdiSouier = experts.find(expert => expert.name.trim() === 'Mehdi SOUIER');
 if (mehdiSouier) {
   mehdiSouier.title = 'Full Professor and Head of Intelligent Systems in Manufacturing (ISM)';
+}
+const abdElMonemElSharkawy = experts.find(expert => expert.name.trim() === 'AbdEl-Monem El-Sharkawy');
+if (abdElMonemElSharkawy) {
+  abdElMonemElSharkawy.title = 'Chairman';
 }
 const ruaaAlFalluji = experts.find(expert => expert.name.trim() === 'Ruaa Al-Falluji');
 if (ruaaAlFalluji) {
