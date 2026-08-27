@@ -19,7 +19,7 @@ const teamProfileLinks:Record<string,string> = {
   'AbdEl-Monem El-Sharkawy': 'https://www.linkedin.com/in/abdel-monem-el-sharkawy-phd-256b84a',
   'Batoul Rida Haidar': 'https://www.linkedin.com/in/batoul-haidar-coven-egy',
   'Hadeer Ehab Barakat': 'https://www.linkedin.com/in/hadeer-ehab-5ba6862a1',
-  'Mousa Tawfiq': 'https://www.linkedin.com/in/mousa-al-akhras-56645316',
+  'Mousa Tawfiq AL-Akhras': 'https://www.linkedin.com/in/mousa-al-akhras-56645316',
   'Roua TOUIHRI': 'https://www.linkedin.com/in/roua-touihri/',
   'Atef El Fekky': 'https://www.linkedin.com/in/atef-elfeki-306a8ba1',
   'Eslam Moussa': 'https://www.linkedin.com/in/eslammoussamba',

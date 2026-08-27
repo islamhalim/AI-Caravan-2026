@@ -48,6 +48,10 @@ experts.push(
   {name:'Thamir Qadah',title:'Assistant Professor in the Department of Computer and Networks Engineering College of Computing',affiliation:'Umm Al-Qura University, KSA',photo:'tmqadah.webp'},
   {name:'Caroline Ling Li',title:'Professor in Biomedical Engineering',affiliation:"City St George's, University of London, UK",photo:'caroline-li-200x267.jpg'}
 );
+const mousaTawfiq = experts.find(expert => expert.name.trim() === 'Mousa Tawfiq');
+if (mousaTawfiq) {
+  mousaTawfiq.name = 'Mousa Tawfiq AL-Akhras';
+}
 const preferredExpertOrder = [
   'Tarek Khalil',
   'Erol Gelenbe',
@@ -64,7 +68,7 @@ const preferredExpertOrder = [
   'Ayesha Afzal',
   'Seifedine Kadry',
   'Mehdi SOUIER',
-  'Mousa Tawfiq',
+  'Mousa Tawfiq AL-Akhras',
   'Sean Bin Yang',
   'Thamir Qadah',
   'Hadeer Ehab Barakat',
