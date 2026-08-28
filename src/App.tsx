@@ -82,6 +82,7 @@ const preferredExpertOrder = [
   'Eslam Moussa',
   'Roua TOUIHRI',
   'AbdEl-Monem El-Sharkawy',
+  'Ruaa Al-Falluji',
   'Alex Watila',
   'Reginald Ogu'
 ];
