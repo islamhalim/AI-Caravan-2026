@@ -240,7 +240,7 @@ function TrackCard({track}:{track:(typeof tracks)[number]}) {
     <h4>Prerequisites</h4><p className="prereq">{prerequisites}</p>
     <div className="track-foot"><Award/> Certificate after successfully completing the final exam</div>
     <button className="track-toggle" type="button" aria-expanded={expanded} aria-controls={panelId} onClick={event=>{event.stopPropagation();toggle();}}><span>{expanded?'Hide curriculum committee':'View curriculum committee'}</span><ChevronRight/></button>
-    {expanded&&<div className="track-committee" id={panelId} onClick={event=>event.stopPropagation()}><h3>AI Caravan Curriculum Development Committee</h3><p>Responsible for designing the track curriculum, identifying its key topics and learning outcomes, and recommending suitable instructors.</p><ul>{committee.map(member=><li key={member}>{member}</li>)}</ul></div>}
+    {expanded&&<div className="track-committee" id={panelId} onClick={event=>event.stopPropagation()}><ul>{committee.map(member=><li key={member}><a href={getTeamProfileLink(member)} target="_blank" rel="noopener noreferrer">{member}<ExternalLink aria-hidden="true"/></a></li>)}</ul></div>}
   </article>
 }
 
