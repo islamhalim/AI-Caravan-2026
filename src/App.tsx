@@ -48,7 +48,8 @@ experts.push(
   {name:'Walid Al-Atabany',title:'Associate Dean for UG Programs & Director of Centre for Informatics (CIS)',affiliation:'Nile University, Egypt',photo:'whatsapp_image_2022-12-20_at_11.46.00_pm.jpeg'},
   {name:'Sean Bin Yang',title:'Assistant Professor in the Department of Computer Science',affiliation:'Aalborg University, Denmark',photo:'BinYang.jpg'},
   {name:'Thamir Qadah',title:'Assistant Professor in the Department of Computer and Networks Engineering College of Computing',affiliation:'Umm Al-Qura University, KSA',photo:'tmqadah.webp'},
-  {name:'Caroline Ling Li',title:'Professor in Biomedical Engineering',affiliation:"City St George's, University of London, UK",photo:'caroline-li-200x267.jpg'}
+  {name:'Caroline Ling Li',title:'Professor in Biomedical Engineering',affiliation:"City St George's, University of London, UK",photo:'caroline-li-200x267.jpg'},
+  {name:'Reginald Ogu',title:'Lecturer in the Department of Computer Engineering',affiliation:'Federal University of Technology, Nigeria',photo:'Reginald-Ogu.webp'}
 );
 const mousaTawfiq = experts.find(expert => expert.name.trim() === 'Mousa Tawfiq');
 if (mousaTawfiq) {
@@ -80,7 +81,9 @@ const preferredExpertOrder = [
   'Khaled Khnissi',
   'Eslam Moussa',
   'Roua TOUIHRI',
-  'AbdEl-Monem El-Sharkawy'
+  'AbdEl-Monem El-Sharkawy',
+  'Alex Watila',
+  'Reginald Ogu'
 ];
 const mehdiSouier = experts.find(expert => expert.name.trim() === 'Mehdi SOUIER');
 if (mehdiSouier) {
@@ -138,6 +141,7 @@ const tunisiaTeamAdditions:Person[] = [
   {name:'Imen othmen',title:'Community Management Team Member, AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Imen othmen.jpeg'}
 ];
 const representatives:Person[]=[{name:'Esraa Elhossieny',affiliation:'Egypt', photo:'esraa.jpg'},{name:'Mohamed Zouari',affiliation:'Tunisia', photo:'zouri.jpg'},{name:'John Mumo Nyerere',affiliation:'Kenya', photo:'John.jpg'},{name:'Qusai Mashriqi',affiliation:'Jordan', photo:'quisai.jpg'},{name:'Muaid Bensasi',affiliation:'Libya', photo:'6ed403ba-0cb4-495a-83dd-0ab8c081b9b7.jpg'},{name:'Simenya Jonathan',affiliation:'Rwanda',photo:'1719237057326.jpg'},{name:'Tasnim Ashraf Khafagy',affiliation:'Kuwait', photo:'tasnim.png'},{name:'Aya AlAkhzami',affiliation:'Oman', photo:'aya-alakhzami.jpg'}];
+representatives.push({name:'Kalu Onyedikachi Ikpo',affiliation:'Nigeria',photo:'1753710857911.jpg'});
 const tasnimAshrafKhafagyIndex = representatives.findIndex(member => member.name === 'Tasnim Ashraf Khafagy');
 if (tasnimAshrafKhafagyIndex !== -1) representatives.splice(tasnimAshrafKhafagyIndex, 1);
 representatives.forEach(member => {

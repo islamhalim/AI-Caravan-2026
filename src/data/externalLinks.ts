@@ -43,6 +43,7 @@ const teamProfileLinks:Record<string,string> = {
   'Thamir Qadah': 'https://uqu.edu.sa/en/tmqadah/App/CV',
   'Caroline Ling Li': 'https://researchcentres.citystgeorges.ac.uk/biomedical-engineering/people',
   'Walid Al-Atabany': 'https://nu.edu.eg/academic-staff/prof-walid-al-atabany',
+  'Reginald Ogu': 'https://legacy.futo.edu.ng/engr-dr-r-e-ogu/',
 };
 
 const affiliationLinks:Array<[string,string]> = [
