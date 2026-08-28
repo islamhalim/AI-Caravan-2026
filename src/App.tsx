@@ -261,6 +261,11 @@ function Team() {
     committeeMemberForLocalTeam('Mohamed Ali Ben Dhiab'),
     ...tunisiaTeamAdditions
   ];
+  const jordanTeam = [
+    ...country('Jordan'),
+    {name:'Mohammad Alqasem',photo:'qasem.webp',affiliation:'Jordan'},
+    {name:'Abdallah Abughallous',photo:'Abdallah Abughallous.jpg',affiliation:'Jordan'}
+  ];
   const kenyaTeam = [...country('Kenya'),committeeMemberForLocalTeam('Rue Kemboi'),committeeMemberForLocalTeam('Ann Mucheke')];
   const groups = [
     ['Caravan Leaders',caravanLeaders],
@@ -270,7 +275,7 @@ function Team() {
     ['Executive Committee',excom],
     ['Egypt Team',egyptTeam],
     ['Tunisia Team',tunisiaTeam],
-    ['Jordan Team',country('Jordan')],
+    ['Jordan Team',jordanTeam],
     ['Kenya Team',kenyaTeam],
     ['R8 – Other Countries',otherR8]
   ] as [string,Person[]][];
