@@ -136,6 +136,8 @@ const tunisiaTeamAdditions:Person[] = [
   {name:'Imen othmen',title:'Community Management Team Member, AI Caravan Tunisia Team',affiliation:'Tunisia',photo:'Imen othmen.jpeg'}
 ];
 const representatives:Person[]=[{name:'Esraa Elhossieny',affiliation:'Egypt', photo:'esraa.jpg'},{name:'Mohamed Zouari',affiliation:'Tunisia', photo:'zouri.jpg'},{name:'John Mumo Nyerere',affiliation:'Kenya', photo:'John.jpg'},{name:'Qusai Mashriqi',affiliation:'Jordan', photo:'quisai.jpg'},{name:'Muaid Bensasi',affiliation:'Libya', photo:'6ed403ba-0cb4-495a-83dd-0ab8c081b9b7.jpg'},{name:'Simenya Jonathan',affiliation:'Rwanda',photo:'1719237057326.jpg'},{name:'Tasnim Ashraf Khafagy',affiliation:'Kuwait', photo:'tasnim.png'},{name:'Aya AlAkhzami',affiliation:'Oman', photo:'aya-alakhzami.jpg'}];
+const tasnimAshrafKhafagyIndex = representatives.findIndex(member => member.name === 'Tasnim Ashraf Khafagy');
+if (tasnimAshrafKhafagyIndex !== -1) representatives.splice(tasnimAshrafKhafagyIndex, 1);
 representatives.forEach(member => {
   member.title = 'AI Caravan representative';
 });
