@@ -1,0 +1,12 @@
+.track-grid.detailed{align-items:start}
+.track-grid.detailed .track{cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+.track-grid.detailed .track:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(0,40,85,.1);border-color:#bfd2dc}
+.track-toggle{width:100%;margin-top:18px;padding:13px 0 0;border:0;border-top:1px solid #e3eaed;background:transparent;color:var(--blue);display:flex;align-items:center;justify-content:space-between;gap:12px;font:700 11px Montserrat;cursor:pointer;text-align:left}
+.track-toggle svg{width:17px;height:17px;transition:transform .2s}
+.track-toggle[aria-expanded="true"] svg{transform:rotate(90deg)}
+.track-committee{margin-top:17px;padding:18px;background:#f5f9fb;border-left:3px solid var(--blue);cursor:default}
+.track-committee h3{font-size:15px;line-height:1.35;margin:0 0 8px;color:var(--navy)}
+.track-committee>p{font-size:12px;line-height:1.6;margin:0 0 13px}
+.track-committee ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.track-committee li{display:flex;align-items:center;gap:9px;color:var(--ink);font-size:12px;font-weight:700}
+.track-committee li:before{content:'';width:7px;height:7px;border-radius:50%;background:var(--orange);flex:0 0 auto}
