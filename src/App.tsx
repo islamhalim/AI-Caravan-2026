@@ -26,7 +26,7 @@ const tracks = [
   { name: 'AI Expert', audience: 'Professionals', hours: '24 hours', copy: 'Apply generative AI and productivity tools to research, communication, analysis, and everyday professional workflows.', prerequisites: 'Basic digital literacy; no programming required.', topics: ['Prompt design and evaluation','Responsible AI use','Research and productivity workflows'], committee: ['Katarina Trojachanec','Sean Bin Yang','Thamir Qadah'], icon: Sparkles, color: 'orange' },
   { name: 'AI Strategist', audience: 'Leaders', hours: '24 hours', copy: 'Translate AI capabilities into responsible organizational strategy, measurable value, governance, and investment decisions.', prerequisites: 'Management or decision-making experience; no programming required.', topics: ['AI opportunity assessment','Governance and risk','Business cases and ROI'], committee: ['Caroline Ling Li','Zorica Bogdanovic'], icon: Briefcase, color: 'blue' },
   { name: 'AI Engineer', audience: 'Builders', hours: '32 hours', copy: 'Build, evaluate, and deploy machine-learning solutions using practical data-science and model-development workflows.', prerequisites: 'Basic Python and introductory statistics or equivalent experience.', topics: ['Data preparation','Model training and evaluation','Applied ML project workflow'], committee: ['Seifedine Kadry','Mehdi SOUIER','Khaled Khnissi'], icon: Bot, color: 'cyan' },
-  { name: 'AI Viber', audience: 'Developers', hours: '32 hours', copy: 'Use AI-assisted engineering methods to design, build, test, and improve modern software products responsibly.', prerequisites: 'Programming fundamentals in any modern language.', topics: ['AI coding assistants','Application integration','Testing, security, and quality'], committee: ['Islam Tharwat Abdel Halim'], icon: Code2, color: 'purple' },
+  { name: 'AI Viber', audience: 'Developers', hours: '32 hours', copy: 'Use AI-assisted engineering methods to design, build, test, and improve modern software products responsibly.', prerequisites: 'Programming fundamentals in any modern language.', topics: ['AI coding assistants','Application integration','Testing, security, and quality'], committee: ['Islam Tharwat Abdel Halim','Francesco Flammini'], icon: Code2, color: 'purple' },
   { name: 'AI Administrator', audience: 'Operators', hours: '28 hours', copy: 'Design agentic workflows and practical automations that connect tools, information, decisions, and human oversight.', prerequisites: 'Comfort using common digital workplace tools; no coding required.', topics: ['Workflow mapping','Agents and automation','Controls and human-in-the-loop design'], committee: ['Mousa Tawfiq AL-Akhras'], icon: Network, color: 'green' },
   { name: 'AI Junior', audience: 'School students', hours: '24 hours', copy: 'Explore how AI works through age-appropriate creative challenges, responsible-use lessons, and guided projects.', prerequisites: 'Curiosity, basic computer skills, and access to a computer; no prior AI experience.', topics: ['AI foundations','Creative problem solving','Safe and responsible AI'], committee: ['Batoul Rida Haidar','Samar M. Nour','Ruaa Al-Falluji'], icon: GraduationCap, color: 'yellow' },
 ];
@@ -49,7 +49,8 @@ experts.push(
   {name:'Sean Bin Yang',title:'Assistant Professor in the Department of Computer Science',affiliation:'Aalborg University, Denmark',photo:'BinYang.jpg'},
   {name:'Thamir Qadah',title:'Assistant Professor in the Department of Computer and Networks Engineering College of Computing',affiliation:'Umm Al-Qura University, KSA',photo:'tmqadah.webp'},
   {name:'Caroline Ling Li',title:'Professor in Biomedical Engineering',affiliation:"City St George's, University of London, UK",photo:'caroline-li-200x267.jpg'},
-  {name:'Reginald Ogu',title:'Lecturer in the Department of Computer Engineering',affiliation:'Federal University of Technology, Nigeria',photo:'Reginald-Ogu.webp'}
+  {name:'Reginald Ogu',title:'Lecturer in the Department of Computer Engineering',affiliation:'Federal University of Technology, Nigeria',photo:'Reginald-Ogu.webp'},
+  {name:'Francesco Flammini',title:'Professor and Group Leader of Trustworthy Autonomous Systems (TAS)',affiliation:'University of Applied Sciences and Arts of Southern Switzerland',photo:'FF-SUPSI_improved.png'}
 );
 const mousaTawfiq = experts.find(expert => expert.name.trim() === 'Mousa Tawfiq');
 if (mousaTawfiq) {
@@ -62,6 +63,7 @@ const preferredExpertOrder = [
   'Samir I. Shaheen',
   'Ahmed Hassan Yousef',
   'Ahmed Hazem El-Mahdy',
+  'Francesco Flammini',
   'Kostas Karpouzis',
   'Katarina Trojachanec',
   'Reyhan Aydogan',

@@ -44,6 +44,7 @@ const teamProfileLinks:Record<string,string> = {
   'Caroline Ling Li': 'https://researchcentres.citystgeorges.ac.uk/biomedical-engineering/people',
   'Walid Al-Atabany': 'https://nu.edu.eg/academic-staff/prof-walid-al-atabany',
   'Reginald Ogu': 'https://legacy.futo.edu.ng/engr-dr-r-e-ogu/',
+  'Francesco Flammini': 'https://www.supsi.ch/en/francesco-flammini',
 };
 
 const affiliationLinks:Array<[string,string]> = [
