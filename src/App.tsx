@@ -40,7 +40,7 @@ const experts:Person[]=[{name:'Tarek Khalil',title:'Founding President of Nile U
 experts.push(
   {name:'Ahmed Hassan Yousef',title:'President',affiliation:'Elsewedy University of Technology (SUT), Egypt',photo:'SUTech-Dr.-Ahmed-Hassan-Yousef-Square.jpg'},
   {name:'Reyhan Aydogan',title:'Associate Professor in Artificial Intelligence and Data Engineering',affiliation:'Ozyegin University, Turkey',photo:'reyhan.jpg'},
-  {name:'Seifedine Kadry',title:'Professor of Data Science',affiliation:'Beirut Arab University, Lebanon',photo:'seifedine-kadry.jpg'},
+  {name:'Seifedine Kadry',title:'Professor of Data Science',affiliation:'Lebanese American University, Lebanon',photo:'seifedine-kadry.jpg'},
   {name:'Roua TOUIHRI',title:'Change Management Board / Enterprise Architect',affiliation:'Elee, Paris, France',photo:'Roua.jpg'},
   {name:'Hironori Washizaki',title:'Professor and Associate Dean of the Research Promotion Division',affiliation:'Waseda University, Japan',photo:'IEEE_CS_Hironori_Washizaki_headshot.jpg'},
   {name:'David Alan Grier',title:'Associate Professor Emeritus of International Science and Technology Policy Emeriti Faculty',affiliation:'George Washington University, US',photo:'David-Alan-Grier-profile-01.webp'},

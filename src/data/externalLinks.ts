@@ -29,7 +29,7 @@ const teamProfileLinks:Record<string,string> = {
   'Ahmed Hassan Yousef': 'https://sut.edu.eg/about-sutech/president/',
   'Ayesha Afzal': 'https://hpc.fau.de/faudir/ayesha-afzal/',
   'Zorica Bogdanovic': 'https://www.etsi.org/speakers/zorica-bogdanovic/',
-  'Seifedine Kadry': 'https://www.computer.org/profiles/seifedine-kadry',
+  'Seifedine Kadry': 'https://soas.lau.edu.lb/about/people/seifedine-n-kadry.php',
   'Mehdi SOUIER': 'https://www.linkedin.com/in/mehdi-souier-19a25234/',
   'Khaled Khnissi': 'https://www.linkedin.com/in/khaled-khnissi-112a6792/',
   'Samar M. Nour': 'https://www.linkedin.com/in/samar-m-nour-14b16424/',
