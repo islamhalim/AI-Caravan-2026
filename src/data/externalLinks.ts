@@ -48,6 +48,7 @@ const teamProfileLinks:Record<string,string> = {
   'Ravitez Dondeti': 'https://www.linkedin.com/in/ravitez-dondeti',
   'Robina Mirbahar': 'https://www.linkedin.com/in/ravitez-dondeti',
   'Charalampos Z. Patrikakis': 'https://aidl.uniwa.gr/instructors/charalampos-z-patrikakis/',
+  'Vasanthi Neelagiri': 'https://www.linkedin.com/in/vasanthineelagiri/',
 };
 
 const affiliationLinks:Array<[string,string]> = [
