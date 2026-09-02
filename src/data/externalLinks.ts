@@ -47,7 +47,7 @@ const teamProfileLinks:Record<string,string> = {
   'Francesco Flammini': 'https://www.supsi.ch/en/francesco-flammini',
   'Tamer El Batt': 'https://www.aucegypt.edu/fac/tamer-el-batt',
   'Ravitez Dondeti': 'https://www.linkedin.com/in/ravitez-dondeti',
-  'Robina Mirbahar': 'https://www.linkedin.com/in/ravitez-dondeti',
+  'Robina Mirbahar': 'http://linkedin.com/in/robinamirbahar',
   'Charalampos Z. Patrikakis': 'https://aidl.uniwa.gr/instructors/charalampos-z-patrikakis/',
   'Vasanthi Neelagiri': 'https://www.linkedin.com/in/vasanthineelagiri/',
 };
