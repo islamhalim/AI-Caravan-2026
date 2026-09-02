@@ -46,6 +46,7 @@ const teamProfileLinks:Record<string,string> = {
   'Reginald Ogu': 'https://legacy.futo.edu.ng/engr-dr-r-e-ogu/',
   'Francesco Flammini': 'https://www.supsi.ch/en/francesco-flammini',
   'Ravitez Dondeti': 'https://www.linkedin.com/in/ravitez-dondeti',
+  'Robina Mirbahar': 'https://www.linkedin.com/in/ravitez-dondeti',
 };
 
 const affiliationLinks:Array<[string,string]> = [
