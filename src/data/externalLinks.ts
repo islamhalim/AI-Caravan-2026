@@ -45,6 +45,7 @@ const teamProfileLinks:Record<string,string> = {
   'Walid Al-Atabany': 'https://nu.edu.eg/academic-staff/prof-walid-al-atabany',
   'Reginald Ogu': 'https://legacy.futo.edu.ng/engr-dr-r-e-ogu/',
   'Francesco Flammini': 'https://www.supsi.ch/en/francesco-flammini',
+  'Tamer El Batt': 'https://www.aucegypt.edu/fac/tamer-el-batt',
   'Ravitez Dondeti': 'https://www.linkedin.com/in/ravitez-dondeti',
   'Robina Mirbahar': 'https://www.linkedin.com/in/ravitez-dondeti',
   'Charalampos Z. Patrikakis': 'https://aidl.uniwa.gr/instructors/charalampos-z-patrikakis/',

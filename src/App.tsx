@@ -51,6 +51,7 @@ experts.push(
   {name:'Caroline Ling Li',title:'Professor in Biomedical Engineering',affiliation:"City St George's, University of London, UK",photo:'caroline-li-200x267.jpg'},
   {name:'Reginald Ogu',title:'Lecturer in the Department of Computer Engineering',affiliation:'Federal University of Technology, Nigeria',photo:'Reginald-Ogu.webp'},
   {name:'Francesco Flammini',title:'Full Professor of Computer Science',affiliation:'University of Florence, Italy',photo:'FF-SUPSI_improved.png'},
+  {name:'Tamer El Batt',title:'Professor, Computer Science and Engineering',affiliation:'Department of Computer Science and Engineering, The American University in Cairo (AUC)',photo:'Tamer (1).jpg'},
   {name:'Charalampos Z. Patrikakis',title:'Professor/Director, Dept. of Electrical & Electronics Engineering',affiliation:'University of West Attica/ CoNSeRT, Greece',photo:'patrikakis.png'}
 );
 const mousaTawfiq = experts.find(expert => expert.name.trim() === 'Mousa Tawfiq');
@@ -65,6 +66,7 @@ const preferredExpertOrder = [
   'Ahmed Hassan Yousef',
   'Ahmed Hazem El-Mahdy',
   'Francesco Flammini',
+  'Tamer El Batt',
   'Kostas Karpouzis',
   'Katarina Trojachanec',
   'Reyhan Aydogan',
