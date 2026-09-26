@@ -1,9 +1,10 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { BrowserRouter, Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Link, NavLink, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { db } from './components/config/firebase';
 import AdminRegistrations from './AdminRegistrations';
 import { getTeamProfileLink, partnerLinks } from './data/externalLinks';
+import { getTrackCurriculum } from './data/trackCurricula';
 import './track-details.css';
 import './publication.css';
 import {
@@ -23,12 +24,12 @@ const countries = [
 ];
 
 const tracks = [
-  { name: 'AI Expert', audience: 'Professionals', hours: '24 hours', copy: 'Apply generative AI and productivity tools to research, communication, analysis, and everyday professional workflows.', prerequisites: 'Basic digital literacy; no programming required.', topics: ['Prompt design and evaluation','Responsible AI use','Research and productivity workflows'], committee: [{name:'Katarina Trojachanec',role:'Expert Track Lead'},{name:'Sean Bin Yang',role:'Expert Track Co-Lead'},{name:'Thamir Qadah',role:'Expert (Reviewer)'}], icon: Sparkles, color: 'orange' },
-  { name: 'AI Strategist', audience: 'Leaders', hours: '24 hours', copy: 'Translate AI capabilities into responsible organizational strategy, measurable value, governance, and investment decisions.', prerequisites: 'Management or decision-making experience; no programming required.', topics: ['AI opportunity assessment','Governance and risk','Business cases and ROI'], committee: [{name:'Caroline Ling Li',role:'Strategist Track Lead'},{name:'Vasanthi Neelagiri',role:'Strategist Track Co-Lead'},{name:'Zorica Bogdanovic',role:'Strategist (Reviewer)'}], icon: Briefcase, color: 'blue' },
-  { name: 'AI Engineer', audience: 'Builders', hours: '32 hours', copy: 'Build, evaluate, and deploy machine-learning solutions using practical data-science and model-development workflows.', prerequisites: 'Basic Python and introductory statistics or equivalent experience.', topics: ['Data preparation','Model training and evaluation','Applied ML project workflow'], committee: [{name:'Seifedine Kadry',role:'Engineering Track Lead'},{name:'Khaled Khnissi',role:'Engineering Track Co-Lead'},{name:'Mehdi SOUIER',role:'Engineer (Reviewer)'}], icon: Bot, color: 'cyan' },
-  { name: 'AI Viber', audience: 'Developers', hours: '32 hours', copy: 'Use AI-assisted engineering methods to design, build, test, and improve modern software products responsibly.', prerequisites: 'Programming fundamentals in any modern language.', topics: ['AI coding assistants','Application integration','Testing, security, and quality'], committee: [{name:'Charalampos Z. Patrikakis',role:'Viber Track Lead'},{name:'Ravitez Dondeti',role:'Viber Track Co-Lead'},{name:'Ayesha Afzal',role:'Viber (Reviewer)'}], icon: Code2, color: 'purple' },
-  { name: 'AI Administrator', audience: 'Operators', hours: '28 hours', copy: 'Design agentic workflows and practical automations that connect tools, information, decisions, and human oversight.', prerequisites: 'Comfort using common digital workplace tools; no coding required.', topics: ['Workflow mapping','Agents and automation','Controls and human-in-the-loop design'], committee: [{name:'Mousa Tawfiq AL-Akhras',role:'Administrator Track Lead'},{name:'Robina Mirbahar',role:'Administrator Track Co-Lead'},{name:'Francesco Flammini',role:'Administrator (Reviewer)'}], icon: Network, color: 'green' },
-  { name: 'AI Junior', audience: 'School students', hours: '24 hours', copy: 'Explore how AI works through age-appropriate creative challenges, responsible-use lessons, and guided projects.', prerequisites: 'Curiosity, basic computer skills, and access to a computer; no prior AI experience.', topics: ['AI foundations','Creative problem solving','Safe and responsible AI'], committee: [{name:'Batoul Rida Haidar',role:'Junior Track Lead'},{name:'Samar M. Nour',role:'Junior Track Co-Lead'},{name:'Kostas Karpouzis',role:'Junior (Reviewer)'}], icon: GraduationCap, color: 'yellow' },
+  { slug: 'ai-expert', name: 'AI Expert', audience: 'Professionals', hours: '24 hours', copy: 'Apply generative AI and productivity tools to research, communication, analysis, and everyday professional workflows.', prerequisites: 'Basic digital literacy; no programming required.', topics: ['Prompt design and evaluation','Responsible AI use','Research and productivity workflows'], committee: [{name:'Katarina Trojachanec',role:'Expert Track Lead'},{name:'Sean Bin Yang',role:'Expert Track Co-Lead'},{name:'Thamir Qadah',role:'Expert (Reviewer)'}], icon: Sparkles, color: 'orange' },
+  { slug: 'ai-strategist', name: 'AI Strategist', audience: 'Leaders', hours: '24 hours', copy: 'Translate AI capabilities into responsible organizational strategy, measurable value, governance, and investment decisions.', prerequisites: 'Management or decision-making experience; no programming required.', topics: ['AI opportunity assessment','Governance and risk','Business cases and ROI'], committee: [{name:'Caroline Ling Li',role:'Strategist Track Lead'},{name:'Vasanthi Neelagiri',role:'Strategist Track Co-Lead'},{name:'Zorica Bogdanovic',role:'Strategist (Reviewer)'}], icon: Briefcase, color: 'blue' },
+  { slug: 'ai-engineer', name: 'AI Engineer', audience: 'Builders', hours: '32 hours', copy: 'Build, evaluate, and deploy machine-learning solutions using practical data-science and model-development workflows.', prerequisites: 'Basic Python and introductory statistics or equivalent experience.', topics: ['Data preparation','Model training and evaluation','Applied ML project workflow'], committee: [{name:'Seifedine Kadry',role:'Engineering Track Lead'},{name:'Khaled Khnissi',role:'Engineering Track Co-Lead'},{name:'Mehdi SOUIER',role:'Engineer (Reviewer)'}], icon: Bot, color: 'cyan' },
+  { slug: 'ai-viber', name: 'AI Viber', audience: 'Developers', hours: '32 hours', copy: 'Use AI-assisted engineering methods to design, build, test, and improve modern software products responsibly.', prerequisites: 'Programming fundamentals in any modern language.', topics: ['AI coding assistants','Application integration','Testing, security, and quality'], committee: [{name:'Charalampos Z. Patrikakis',role:'Viber Track Lead'},{name:'Ravitez Dondeti',role:'Viber Track Co-Lead'},{name:'Ayesha Afzal',role:'Viber (Reviewer)'}], icon: Code2, color: 'purple' },
+  { slug: 'ai-administrator', name: 'AI Administrator', audience: 'Operators', hours: '28 hours', copy: 'Design agentic workflows and practical automations that connect tools, information, decisions, and human oversight.', prerequisites: 'Comfort using common digital workplace tools; no coding required.', topics: ['Workflow mapping','Agents and automation','Controls and human-in-the-loop design'], committee: [{name:'Mousa Tawfiq AL-Akhras',role:'Administrator Track Lead'},{name:'Robina Mirbahar',role:'Administrator Track Co-Lead'},{name:'Francesco Flammini',role:'Administrator (Reviewer)'}], icon: Network, color: 'green' },
+  { slug: 'ai-junior', name: 'AI Junior', audience: 'School students', hours: '24 hours', copy: 'Explore how AI works through age-appropriate creative challenges, responsible-use lessons, and guided projects.', prerequisites: 'Curiosity, basic computer skills, and access to a computer; no prior AI experience.', topics: ['AI foundations','Creative problem solving','Safe and responsible AI'], committee: [{name:'Batoul Rida Haidar',role:'Junior Track Lead'},{name:'Samar M. Nour',role:'Junior Track Co-Lead'},{name:'Kostas Karpouzis',role:'Junior (Reviewer)'}], icon: GraduationCap, color: 'yellow' },
 ];
 
 type Person = { name:string; title?:string; affiliation?:string; photo?:string };
@@ -251,12 +252,81 @@ function TrackCard({track}:{track:(typeof tracks)[number]}) {
     <h4>What you will cover</h4><ul>{topics.map(topic=><li key={topic}>{topic}</li>)}</ul>
     <h4>Prerequisites</h4><p className="prereq">{prerequisites}</p>
     <div className="track-foot"><Award/> Certificate after successfully completing the final exam</div>
+    <Link className="track-page-link" to={`/activities/${track.slug}`} onClick={event=>event.stopPropagation()}>Explore the full curriculum <ArrowRight/></Link>
     <button className="track-toggle" type="button" aria-expanded={expanded} aria-controls={panelId} onClick={event=>{event.stopPropagation();toggle();}}><span>{expanded?'Hide curriculum committee':'View curriculum committee'}</span><ChevronRight/></button>
     {expanded&&<div className="track-committee" id={panelId} onClick={event=>event.stopPropagation()}><ul>{committee.map(member=><li key={member.name}><a href={getTeamProfileLink(member.name)} target="_blank" rel="noopener noreferrer">{member.name}<ExternalLink aria-hidden="true"/></a><span>{member.role}</span></li>)}</ul></div>}
   </article>
 }
 
-function Activities() { return <><PageHero eyebrow="2026 Program" title="Six pathways. One regional movement." copy="Choose the learning experience that matches how you work, lead, build, or learn."/><section className="section container"><div className="section-heading track-intro"><span className="eyebrow">Explore each pathway</span><p>Click any track card to meet the Curriculum Development Committee responsible for shaping its curriculum, learning outcomes, and instructor recommendations.</p></div><div className="track-grid detailed">{tracks.map(track=><TrackCard track={track} key={track.name}/>)}</div></section><section className="section soft"><div className="container"><div className="section-heading"><span className="eyebrow">On-ground events</span><h2>AI Caravan in the community</h2><p>Local events connect the regional curriculum with practical challenges, young innovators, and local AI ecosystems.</p></div><article className="event-feature"><div className="event-copy"><div className="event-meta"><span><MapPin/>Hammamet, Tunisia</span><span><CalendarDays/>20 June 2026</span></div><h2>Software Engineering International Summit (SEIS)</h2><p>As an official SEIS Tunisia partner, the IEEE Computer Society Region 8 AI Caravan introduced juniors, teenagers, and university students to AI opportunities, responsible use, and real-world applications.</p><p>A highlight was seeing participants collaborate on AI-powered solutions addressing challenges faced by people with ADHD—showing how technology can create meaningful social impact.</p></div><div className="event-gallery">{eventPhotos.map((photo,i)=><div key={photo}><Photo src={photo} alt={`SEIS Tunisia event photo ${i+1}`}/></div>)}</div></article><div className="country-grid compact">{['Egypt','Tunisia','Kenya','Nigeria','Jordan','Libya','Rwanda','Uganda'].map((c,i)=><article key={c}><span>{String(i+1).padStart(2,'0')}</span><MapPin/><h3>{c}</h3><p>Talks · Workshops · Panels · Networking</p></article>)}</div><p className="expansion-note"><Globe2/> Potential expansion to Saudi Arabia, Algeria, and France.</p></div></section></> }
+function TrackDetails() {
+  const {trackSlug} = useParams();
+  const curriculum = getTrackCurriculum(trackSlug);
+  const track = tracks.find(item => item.slug === trackSlug);
+  useEffect(() => { window.scrollTo(0, 0); }, [trackSlug]);
+  if (!curriculum || !track) return <NotFound/>;
+  const Icon = track.icon;
+  return <>
+    <section className={`track-detail-hero ${track.color}`}>
+      <div className="container">
+        <Link className="track-back" to="/activities"><ChevronRight/> All learning pathways</Link>
+        <div className="track-detail-hero-grid">
+          <div><span className="eyebrow">{track.audience} pathway</span><h1>{track.name}</h1><p>{track.copy}</p></div>
+          <div className="track-detail-mark"><Icon/><strong>{track.hours}</strong><span>Live online learning</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section className="track-detail-summary container">
+      <article><Clock3/><div><span>Duration & format</span><strong>{curriculum.delivery}</strong></div></article>
+      <article><Target/><div><span>Audience</span><strong>{track.audience}</strong></div></article>
+      <article><Award/><div><span>Recognition</span><strong>Certificate after successful completion</strong></div></article>
+    </section>
+
+    <section className="section container track-detail-intro">
+      <div><span className="eyebrow">Overall goal</span><h2>From knowledge to practical capability.</h2></div>
+      <div className="prose"><p>{curriculum.goal}</p><p>{curriculum.learningApproach}</p></div>
+    </section>
+
+    <section className="section soft">
+      <div className="container curriculum-section">
+        <div className="section-heading"><span className="eyebrow">Learning outcomes</span><h2>What participants will be able to do</h2></div>
+        <div className="outcome-grid">{curriculum.outcomes.map((outcome,index)=><article key={outcome}><span>{String(index+1).padStart(2,'0')}</span><p>{outcome}</p></article>)}</div>
+      </div>
+    </section>
+
+    <section className="section container curriculum-columns">
+      <article><span className="curriculum-icon"><BookOpen/></span><h2>Knowledge covered</h2><ul>{curriculum.theory.map(item=><li key={item}><CheckCircle2/>{item}</li>)}</ul></article>
+      <article><span className="curriculum-icon"><Rocket/></span><h2>Practical application</h2><ul>{curriculum.practical.map(item=><li key={item}><CheckCircle2/>{item}</li>)}</ul></article>
+    </section>
+
+    <section className="section track-plan-wrap">
+      <div className="container track-plan-layout">
+        <div><span className="eyebrow">Curriculum plan</span><h2>The learning journey</h2><p>The program progresses from foundations to applied practice, project work, and final assessment.</p></div>
+        <ol className="track-plan">{curriculum.sessions.map((session,index)=><li key={`${session.title}-${index}`}><span>{String(index+1).padStart(2,'0')}</span><div><h3>{session.title}</h3>{session.detail&&<p>{session.detail}</p>}</div></li>)}</ol>
+      </div>
+    </section>
+
+    <section className="section container track-requirements">
+      <article><span className="eyebrow">Before you start</span><h2>Prerequisites</h2><ul>{curriculum.prerequisites.map(item=><li key={item}>{item}</li>)}</ul></article>
+      {curriculum.tools&&<article><span className="eyebrow">Learning environment</span><h2>Tools and platforms</h2><div className="tool-tags">{curriculum.tools.map(item=><span key={item}>{item}</span>)}</div></article>}
+    </section>
+
+    <section className="section soft">
+      <div className="container assessment-layout">
+        <div><span className="eyebrow">Assessment & certification</span><h2>Demonstrate both knowledge and practice.</h2><div className="assessment-list">{curriculum.assessment.map(item=><p key={item}><CheckCircle2/>{item}</p>)}</div></div>
+        <aside><Award/><h3>Completion requirements</h3><ul>{curriculum.completion.map(item=><li key={item}>{item}</li>)}</ul></aside>
+      </div>
+    </section>
+
+    <section className="section container track-detail-committee">
+      <div className="section-heading"><span className="eyebrow">Curriculum Development Committee</span><h2>The experts shaping this pathway</h2></div>
+      <div className="committee-grid">{track.committee.map(member=><a href={getTeamProfileLink(member.name)} target="_blank" rel="noopener noreferrer" key={member.name}><div><strong>{member.name}</strong><span>{member.role}</span></div><ExternalLink/></a>)}</div>
+      <div className="track-detail-actions"><Link className="btn secondary" to="/activities">Compare all tracks</Link><Link className="btn primary" to="/contact">Ask about this track <ArrowRight/></Link></div>
+    </section>
+  </>;
+}
+
+function Activities() { return <><PageHero eyebrow="2026 Program" title="Six pathways. One regional movement." copy="Choose the learning experience that matches how you work, lead, build, or learn."/><section className="section container"><div className="section-heading track-intro"><span className="eyebrow">Explore each pathway</span><p>Open a track’s full curriculum for its learning outcomes, practical work, prerequisites, assessment, and committee—or expand the card for a quick look at its curriculum committee.</p></div><div className="track-grid detailed">{tracks.map(track=><TrackCard track={track} key={track.name}/>)}</div></section><section className="section soft"><div className="container"><div className="section-heading"><span className="eyebrow">On-ground events</span><h2>AI Caravan in the community</h2><p>Local events connect the regional curriculum with practical challenges, young innovators, and local AI ecosystems.</p></div><article className="event-feature"><div className="event-copy"><div className="event-meta"><span><MapPin/>Hammamet, Tunisia</span><span><CalendarDays/>20 June 2026</span></div><h2>Software Engineering International Summit (SEIS)</h2><p>As an official SEIS Tunisia partner, the IEEE Computer Society Region 8 AI Caravan introduced juniors, teenagers, and university students to AI opportunities, responsible use, and real-world applications.</p><p>A highlight was seeing participants collaborate on AI-powered solutions addressing challenges faced by people with ADHD—showing how technology can create meaningful social impact.</p></div><div className="event-gallery">{eventPhotos.map((photo,i)=><div key={photo}><Photo src={photo} alt={`SEIS Tunisia event photo ${i+1}`}/></div>)}</div></article><div className="country-grid compact">{['Egypt','Tunisia','Kenya','Nigeria','Jordan','Libya','Rwanda','Uganda'].map((c,i)=><article key={c}><span>{String(i+1).padStart(2,'0')}</span><MapPin/><h3>{c}</h3><p>Talks · Workshops · Panels · Networking</p></article>)}</div><p className="expansion-note"><Globe2/> Potential expansion to Saudi Arabia, Algeria, and France.</p></div></section></> }
 
 function PublicationFeature() { return <section className="publication-section"><div className="container publication-card"><a className="publication-cover" href="/docs/IEEE-CS-AI-Caravan-Published-Paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the AI Caravan published paper PDF"><img src="/imgs/ai-caravan-paper-cover.png" alt="First page of the published IEEE Computer Society AI Caravan paper"/></a><div className="publication-copy"><span className="eyebrow">Published Paper · IEEE Potentials</span><h2>IEEE Computer Society AI Caravan: Bridging the knowledge gap from Region 8 to the global stage</h2><p className="publication-author">By Islam Tharwat Abdel Halim</p><p>The article presents the Caravan’s community-focused model for making practical AI knowledge accessible across IEEE Region 8 and extending its impact to the global stage.</p><div className="publication-meta"><span>May/June 2026</span><span>DOI: 10.1109/MPOT.2026.3708243</span><span>IEEE Article ID: 11663559</span></div><div className="publication-actions"><a className="btn primary" href="https://ieeexplore.ieee.org/document/11663559" target="_blank" rel="noopener noreferrer">Read on IEEE Xplore <ExternalLink/></a><a className="btn secondary" href="/docs/IEEE-CS-AI-Caravan-Published-Paper.pdf" target="_blank" rel="noopener noreferrer">Open PDF <BookOpen/></a></div></div></div></section> }
 
@@ -327,4 +397,4 @@ function Contact() { return <><PageHero eyebrow="Contact" title="Let’s move pr
 
 function NotFound(){ return <section className="not-found"><span>404</span><h1>This stop is not on the route.</h1><Link className="btn primary" to="/">Return home</Link></section> }
 
-export default function App(){ return <BrowserRouter><Header/><main><Routes><Route path="/" element={<Home/>}/><Route path="/about" element={<About/>}/><Route path="/activities" element={<Activities/>}/><Route path="/highlights" element={<Highlights/>}/><Route path="/partners" element={<Partners/>}/><Route path="/timeline" element={<Timeline/>}/><Route path="/team" element={<Team/>}/><Route path="/registration" element={<Registration/>}/><Route path="/admin/registrations" element={<AdminRegistrations/>}/><Route path="/contact" element={<Contact/>}/><Route path="*" element={<NotFound/>}/></Routes></main><Footer/></BrowserRouter> }
+export default function App(){ return <BrowserRouter><Header/><main><Routes><Route path="/" element={<Home/>}/><Route path="/about" element={<About/>}/><Route path="/activities" element={<Activities/>}/><Route path="/activities/:trackSlug" element={<TrackDetails/>}/><Route path="/highlights" element={<Highlights/>}/><Route path="/partners" element={<Partners/>}/><Route path="/timeline" element={<Timeline/>}/><Route path="/team" element={<Team/>}/><Route path="/registration" element={<Registration/>}/><Route path="/admin/registrations" element={<AdminRegistrations/>}/><Route path="/contact" element={<Contact/>}/><Route path="*" element={<NotFound/>}/></Routes></main><Footer/></BrowserRouter> }
