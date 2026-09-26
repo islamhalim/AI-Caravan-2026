@@ -219,9 +219,9 @@ export const trackCurricula: TrackCurriculum[] = [
   {
     slug: 'ai-junior',
     name: 'AI Junior',
-    goal: 'Introduce school students to artificial intelligence through safe, age-appropriate explanations, creative challenges, and guided projects that build confidence and curiosity.',
+    goal: 'Introduce beginners to artificial intelligence through safe, accessible explanations, creative challenges, and guided projects that build confidence and curiosity.',
     delivery: '24 hours · Online training',
-    learningApproach: 'Friendly explanations, guided exercises, no-code labs, and creative project work. No prior AI or programming experience is required.',
+    learningApproach: 'Beginner-friendly explanations, guided exercises, no-code labs, and creative project work. No prior AI or programming experience is required.',
     outcomes: ['Explain core AI and machine-learning ideas in accessible language.', 'Recognize common AI applications in everyday life.', 'Create a simple no-code AI model and a basic chatbot.', 'Use AI creatively for art, music, or storytelling.', 'Apply safe, ethical, and responsible-use practices.'],
     theory: ['AI foundations and everyday applications', 'Creative problem solving with AI', 'Safe and responsible AI use', 'Machine-learning basics', 'Neural-network concepts', 'How chatbots and creative AI systems work'],
     practical: ['Train a simple model with Teachable Machine.', 'Create and test a basic chatbot.', 'Complete a guided AI art, music, or storytelling activity.', 'Design and present a final creative AI project.'],
