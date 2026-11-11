@@ -152,9 +152,9 @@ exports.sendSummitRegistrationConfirmation = onDocumentCreated(
     }
 
     const packageLabels = {
-      accommodation: "Full registration with accommodation (2 nights)",
-      "without-accommodation": "Full registration without accommodation",
-      access: "Access registration",
+      accommodation: "Accommodation Registration Package",
+      "without-accommodation": "Full Registration Package",
+      access: "Access Registration Package",
     };
     const packageLabel = packageLabels[attendancePackage] || attendancePackage;
     const feeLabel = feeUsd > 0 ? `$${feeUsd} USD` : "Free";

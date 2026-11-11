@@ -15,9 +15,9 @@ type Registration = {
 type ChartDatum = {label:string;value:number};
 
 const packageLabels:Record<string,string> = {
-  accommodation:'Full registration with accommodation',
-  'without-accommodation':'Full registration without accommodation',
-  access:'Access registration',
+  accommodation:'Accommodation Registration Package',
+  'without-accommodation':'Full Registration Package',
+  access:'Access Registration Package',
 };
 
 function timestampText(value?:Timestamp){if(!value?.toDate)return '';return value.toDate().toLocaleString('en-GB',{timeZone:'Africa/Cairo'});}
