@@ -9,8 +9,8 @@ service cloud.firestore {
 
     match /registrations-2026/{emailId} {
       allow create: if !exists(/databases/$(database)/documents/registrations-2026/$(emailId))
-        && request.time >= timestamp.value('2026-08-14T21:00:00Z')
-        && request.time < timestamp.value('2026-08-31T21:00:00Z')
+        && request.time >= timestamp.value('2026-11-09T22:00:00Z')
+        && request.time <= timestamp.value('2026-11-15T21:59:59Z')
         && request.resource.data.programYear == 2026
         && request.resource.data.consent == true
         && request.resource.data.email is string
@@ -23,6 +23,25 @@ service cloud.firestore {
         && request.resource.data.track in [
           'AI Expert', 'AI Strategist', 'AI Engineer',
           'AI Viber', 'AI Administrator', 'AI Junior'
+        ];
+      allow read: if isRegistrationAdmin();
+      allow update, delete: if false;
+    }
+
+    match /summit-registrations-2026/{emailId} {
+      allow create: if !exists(/databases/$(database)/documents/summit-registrations-2026/$(emailId))
+        && request.time >= timestamp.value('2026-11-09T22:00:00Z')
+        && request.time <= timestamp.value('2026-11-30T21:59:59Z')
+        && request.resource.data.programYear == 2026
+        && request.resource.data.consent == true
+        && request.resource.data.email is string
+        && request.resource.data.name is string
+        && request.resource.data.title is string
+        && request.resource.data.country is string
+        && request.resource.data.residency in ['egyptian', 'non-egyptian']
+        && request.resource.data.ieeeMembership in ['member', 'non-member']
+        && request.resource.data.attendancePackage in [
+          'accommodation', 'without-accommodation', 'access'
         ];
       allow read: if isRegistrationAdmin();
       allow update, delete: if false;

@@ -50,6 +50,18 @@ const teamProfileLinks:Record<string,string> = {
   'Robina Mirbahar': 'http://linkedin.com/in/robinamirbahar',
   'Charalampos Z. Patrikakis': 'https://aidl.uniwa.gr/instructors/charalampos-z-patrikakis/',
   'Vasanthi Neelagiri': 'https://www.linkedin.com/in/vasanthineelagiri/',
+  'Passent M. ElKafrawy': 'https://www.effatuniversity.edu.sa/English/Personal/pelkafrawy/pages/default.aspx',
+  'Sherin M. Youssef': 'https://eg.linkedin.com/in/sherin-m-youssef-33161955',
+  'Mohammad Abdel-Majeed': 'https://psut.edu.jo/en/staff/professor/School_of_Engineering/dr-mohammad-abdel-majeed',
+  'Martin Kiselicki': 'https://eccf.ukim.edu.mk/en/about-us-2/faculty-staff/assistant-professors/martin-kiselicki/',
+  'Tamer Arafa': 'https://scholar.google.com/citations?user=hj6StlYAAAAJ&hl=en',
+  'Jeanine A. DeFalco, PhD': 'https://scholar.google.com/citations?user=wzVT9aAAAAAJ&hl=en',
+  'Tamara Naumovic': 'https://scholar.google.com/citations?user=OXXLKCcAAAAJ&hl=en',
+  'Petar Lukovac': 'https://en.elab.fon.bg.ac.rs/petar-lukovac/',
+  'Loveleen Gaur': 'https://sciprofiles.com/profile/2450101',
+  'Abedal-Kareem Al-Banna': 'https://scholar.google.com/citations?user=iT-DOPkAAAAJ&hl=en',
+  'Emna Amri': 'https://scholar.google.com/citations?user=LnNayYQAAAAJ&hl=en',
+  'M Naeem': 'https://scholar.google.com/citations?user=NuhldJwAAAAJ&hl=en',
 };
 
 const affiliationLinks:Array<[string,string]> = [
@@ -88,6 +100,8 @@ export const partnerLinks:Record<string,string> = {
   'ENETCom Sfax': 'https://enetcom.rnu.tn/',
   'University of Jordan': 'https://www.ju.edu.jo/',
   'Amman Arab University': 'https://www.aau.edu.jo/',
+  'Effat University': 'https://www.effatuniversity.edu.sa/English/Pages/default.aspx',
+  'Libyan British University': 'https://lbu.edu.ly/',
   'Multimedia University of Kenya, Kenya': 'https://www.mmu.ac.ke/',
   'Dedan Kimathi University of Technology': 'https://www.dkut.ac.ke/',
   'National Academy of Information Technology for Persons with Disabilities, Egypt': 'https://mcit.gov.eg/en/Digital_Citizenship/NAID',
