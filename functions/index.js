@@ -156,10 +156,17 @@ exports.sendSummitRegistrationConfirmation = onDocumentCreated(
       "without-accommodation": "Full Registration Package",
       access: "Access Registration Package",
     };
+    const packageDescriptions = {
+      accommodation: "2 nights / 3 days at Engineering Authority House Hotel + ID + meals + transportation + giveaways + sightseeing + gala dinner + all summit activities",
+      "without-accommodation": "ID + meals + giveaways + sightseeing + gala dinner + all summit activities",
+      access: "ID + all summit activities only",
+    };
     const packageLabel = packageLabels[attendancePackage] || attendancePackage;
+    const packageDescription = packageDescriptions[attendancePackage] || "";
     const feeLabel = feeUsd > 0 ? `$${feeUsd} USD` : "Free";
     const safeName = escapeHtml(name);
     const safePackage = escapeHtml(packageLabel);
+    const safePackageDescription = escapeHtml(packageDescription);
     const safeFee = escapeHtml(feeLabel);
 
     const transporter = nodemailer.createTransport({
@@ -185,6 +192,7 @@ exports.sendSummitRegistrationConfirmation = onDocumentCreated(
           "Summit dates: 16–18 December 2026",
           "Location: Cairo, Egypt",
           `Registration package: ${packageLabel}`,
+          `Package includes: ${packageDescription}`,
           `Registration fee: ${feeLabel}`,
           "",
           "Your registration has been received successfully. Payment instructions, where applicable, and further logistical details will be shared by the Caravan team.",
@@ -202,6 +210,7 @@ exports.sendSummitRegistrationConfirmation = onDocumentCreated(
                 <p style="margin:0 0 6px"><strong>Dates:</strong> 16–18 December 2026</p>
                 <p style="margin:0 0 6px"><strong>Location:</strong> Cairo, Egypt</p>
                 <p style="margin:0 0 6px"><strong>Registration package:</strong> ${safePackage}</p>
+                <p style="margin:0 0 6px"><strong>Package includes:</strong> ${safePackageDescription}</p>
                 <p style="margin:0"><strong>Registration fee:</strong> ${safeFee}</p>
               </div>
               <p>Your registration has been received successfully. Payment instructions, where applicable, and further logistical details will be shared by the Caravan team.</p>
