@@ -118,3 +118,120 @@ exports.sendRegistrationConfirmation = onDocumentCreated(
     }
   },
 );
+
+exports.sendSummitRegistrationConfirmation = onDocumentCreated(
+  {
+    document: "summit-registrations-2026/{registrationId}",
+    region: "europe-west1",
+    secrets: [gmailAppPassword],
+  },
+  async (event) => {
+    const snapshot = event.data;
+    if (!snapshot) return;
+
+    const registration = snapshot.data();
+    const email = String(registration.email || "").trim().toLowerCase();
+    const name = String(registration.name || "Participant").trim();
+    const attendancePackage = String(
+      registration.attendancePackage || "access",
+    ).trim();
+    const feeUsd = Number(registration.feeUsd || 0);
+
+    if (!email || !email.includes("@")) {
+      logger.error("Summit registration has no valid recipient email", {
+        registrationId: event.params.registrationId,
+      });
+      await snapshot.ref.set({
+        confirmationEmail: {
+          status: "error",
+          error: "Missing or invalid recipient email",
+          updatedAt: FieldValue.serverTimestamp(),
+        },
+      }, {merge: true});
+      return;
+    }
+
+    const packageLabels = {
+      accommodation: "Full registration with accommodation (2 nights)",
+      "without-accommodation": "Full registration without accommodation",
+      access: "Access registration",
+    };
+    const packageLabel = packageLabels[attendancePackage] || attendancePackage;
+    const feeLabel = feeUsd > 0 ? `$${feeUsd} USD` : "Free";
+    const safeName = escapeHtml(name);
+    const safePackage = escapeHtml(packageLabel);
+    const safeFee = escapeHtml(feeLabel);
+
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: senderEmail,
+        pass: gmailAppPassword.value(),
+      },
+    });
+
+    try {
+      const result = await transporter.sendMail({
+        from: `IEEE CS Region 8 AI Caravan <${senderEmail}>`,
+        replyTo: senderEmail,
+        to: email,
+        subject: "AI Caravan Summit 2026 registration received",
+        text: [
+          `Dear ${name},`,
+          "",
+          "Thank you for registering for the 2nd IEEE Computer Society AI Caravan Summit.",
+          "Summit dates: 16–18 December 2026",
+          "Location: Cairo, Egypt",
+          `Registration package: ${packageLabel}`,
+          `Registration fee: ${feeLabel}`,
+          "",
+          "Your registration has been received successfully. Payment instructions, where applicable, and further logistical details will be shared by the Caravan team.",
+          "",
+          "Best regards,",
+          "IEEE Computer Society Region 8 AI Caravan Team",
+        ].join("\n"),
+        html: `
+          <div style="font-family:Arial,sans-serif;line-height:1.6;color:#20252b;max-width:640px;margin:auto">
+            <div style="border-top:6px solid #f58220;padding:28px;border-right:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;border-left:1px solid #e5e7eb">
+              <p>Dear ${safeName},</p>
+              <h1 style="font-size:24px;color:#111827">Summit registration received</h1>
+              <p>Thank you for registering for the <strong>2nd IEEE Computer Society AI Caravan Summit</strong>.</p>
+              <div style="padding:14px 16px;background:#fff7ed;border-left:4px solid #f58220">
+                <p style="margin:0 0 6px"><strong>Dates:</strong> 16–18 December 2026</p>
+                <p style="margin:0 0 6px"><strong>Location:</strong> Cairo, Egypt</p>
+                <p style="margin:0 0 6px"><strong>Registration package:</strong> ${safePackage}</p>
+                <p style="margin:0"><strong>Registration fee:</strong> ${safeFee}</p>
+              </div>
+              <p>Your registration has been received successfully. Payment instructions, where applicable, and further logistical details will be shared by the Caravan team.</p>
+              <p>Best regards,<br><strong>IEEE Computer Society Region 8 AI Caravan Team</strong></p>
+              <p style="font-size:12px;color:#6b7280">Questions? Reply to this email or contact ${senderEmail}.</p>
+            </div>
+          </div>`,
+      });
+
+      await snapshot.ref.set({
+        confirmationEmail: {
+          status: "sent",
+          messageId: result.messageId || "",
+          sentAt: FieldValue.serverTimestamp(),
+        },
+      }, {merge: true});
+
+      logger.info("Summit registration confirmation sent", {
+        registrationId: event.params.registrationId,
+      });
+    } catch (error) {
+      logger.error("Summit registration confirmation failed", error);
+      await snapshot.ref.set({
+        confirmationEmail: {
+          status: "error",
+          error: error instanceof Error ? error.message : "Unknown email error",
+          updatedAt: FieldValue.serverTimestamp(),
+        },
+      }, {merge: true});
+      throw error;
+    }
+  },
+);
