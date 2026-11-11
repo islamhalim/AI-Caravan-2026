@@ -24,8 +24,8 @@ service cloud.firestore {
           'AI Expert', 'AI Strategist', 'AI Engineer',
           'AI Viber', 'AI Administrator', 'AI Junior'
         ];
-      allow read: if isRegistrationAdmin();
-      allow update, delete: if false;
+      allow read, delete: if isRegistrationAdmin();
+      allow update: if false;
     }
 
     match /summit-registrations-2026/{emailId} {
@@ -43,8 +43,8 @@ service cloud.firestore {
         && request.resource.data.attendancePackage in [
           'accommodation', 'without-accommodation', 'access'
         ];
-      allow read: if isRegistrationAdmin();
-      allow update, delete: if false;
+      allow read, delete: if isRegistrationAdmin();
+      allow update: if false;
     }
   }
 }
