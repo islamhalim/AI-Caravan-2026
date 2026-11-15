@@ -29,13 +29,12 @@ const tracks = [
   { slug: 'ai-expert', name: 'AI Expert', audience: 'Professionals', hours: '24 hours', copy: 'Apply generative AI and productivity tools to research, communication, analysis, and everyday professional workflows.', prerequisites: 'Basic digital literacy; no programming required.', topics: ['Prompt design and evaluation','Responsible AI use','Research and productivity workflows'], committee: [{name:'Katarina Trojachanec',role:'Expert Track Lead'},{name:'Sean Bin Yang',role:'Expert Track Co-Lead'},{name:'Thamir Qadah',role:'Expert (Reviewer)'}], icon: Sparkles, color: 'orange' },
   { slug: 'ai-strategist', name: 'AI Strategist', audience: 'Leaders', hours: '24 hours', copy: 'Translate AI capabilities into responsible organizational strategy, measurable value, governance, and investment decisions.', prerequisites: 'Management or decision-making experience; no programming required.', topics: ['AI opportunity assessment','Governance and risk','Business cases and ROI'], committee: [{name:'Caroline Ling Li',role:'Strategist Track Lead'},{name:'Vasanthi Neelagiri',role:'Strategist Track Co-Lead'},{name:'Zorica Bogdanovic',role:'Strategist (Reviewer)'}], icon: Briefcase, color: 'blue' },
   { slug: 'ai-engineer', name: 'AI Engineer', audience: 'Builders', hours: '32 hours', copy: 'Build, evaluate, and deploy machine-learning solutions using practical data-science and model-development workflows.', prerequisites: 'Basic Python and introductory statistics or equivalent experience.', topics: ['Data preparation','Model training and evaluation','Applied ML project workflow'], committee: [{name:'Seifedine Kadry',role:'Engineering Track Lead'},{name:'Khaled Khnissi',role:'Engineering Track Co-Lead'},{name:'Mehdi SOUIER',role:'Engineer (Reviewer)'}], icon: Bot, color: 'cyan' },
-  { slug: 'ai-viber', name: 'AI Viber', audience: 'Developers', hours: '32 hours', copy: 'Use AI-assisted engineering methods to design, build, test, and improve modern software products responsibly.', prerequisites: 'Programming fundamentals in any modern language.', topics: ['AI coding assistants','Application integration','Testing, security, and quality'], committee: [{name:'Charalampos Z. Patrikakis',role:'Viber Track Lead'},{name:'Ravitez Dondeti',role:'Viber Track Co-Lead'},{name:'Ayesha Afzal',role:'Viber (Reviewer)'}], icon: Code2, color: 'purple' },
+  { slug: 'ai-viber', name: 'AI Viber', audience: 'Developers', hours: '28 hours', copy: 'Use AI-assisted engineering methods to design, build, test, and improve modern software products responsibly.', prerequisites: 'Programming fundamentals in any modern language.', topics: ['AI coding assistants','Application integration','Testing, security, and quality'], committee: [{name:'Charalampos Z. Patrikakis',role:'Viber Track Lead'},{name:'Ravitez Dondeti',role:'Viber Track Co-Lead'},{name:'Ayesha Afzal',role:'Viber (Reviewer)'}], icon: Code2, color: 'purple' },
   { slug: 'ai-administrator', name: 'AI Administrator', audience: 'Managers', hours: '28 hours', copy: 'Design agentic workflows and practical automations that connect tools, information, decisions, and human oversight.', prerequisites: 'Comfort using common digital workplace tools; no coding required.', topics: ['Workflow mapping','Agents and automation','Controls and human-in-the-loop design'], committee: [{name:'Mousa Tawfiq AL-Akhras',role:'Administrator Track Lead'},{name:'Robina Mirbahar',role:'Administrator Track Co-Lead'},{name:'Francesco Flammini',role:'Administrator (Reviewer)'}], icon: Network, color: 'green' },
   { slug: 'ai-junior', name: 'AI Junior', audience: 'Beginners', hours: '24 hours', copy: 'Explore how AI works through accessible creative challenges, responsible-use lessons, and guided projects.', prerequisites: 'Curiosity, basic computer skills, and access to a computer; no prior AI experience.', topics: ['AI foundations','Creative problem solving','Safe and responsible AI'], committee: [{name:'Batoul Rida Haidar',role:'Junior Track Lead'},{name:'Samar M. Nour',role:'Junior Track Co-Lead'},{name:'Kostas Karpouzis',role:'Junior (Reviewer)'}], icon: GraduationCap, color: 'yellow' },
 ];
 
 const cohortSchedule = [
-  {day:'Wednesday',date:'18 Nov 2026',sessions:{'AI Viber':'6–10 PM'}},
   {day:'Friday',date:'20 Nov 2026',sessions:{'AI Strategist':'6–10 PM','AI Engineer':'6–10 PM'}},
   {day:'Saturday',date:'21 Nov 2026',sessions:{'AI Strategist':'6–10 PM','AI Engineer':'6–10 PM'}},
   {day:'Sunday',date:'22 Nov 2026',sessions:{'AI Administrator':'6–10 PM','AI Viber':'6–10 PM'}},
@@ -57,6 +56,7 @@ const cohortSchedule = [
   {day:'Friday',date:'11 Dec 2026',sessions:{'AI Engineer':'6–10 PM'}},
   {day:'Saturday',date:'12 Dec 2026',sessions:{'AI Engineer':'6–10 PM'}},
   {day:'Sunday',date:'13 Dec 2026',sessions:{'AI Administrator':'6–10 PM','AI Viber':'6–10 PM'}},
+  {day:'Tuesday',date:'15 Dec 2026',sessions:{'AI Strategist':'Final exam','AI Expert':'Final exam','AI Junior':'Final exam','AI Administrator':'Final exam','AI Viber':'Final exam','AI Engineer':'Final exam'}},
 ] as {day:string;date:string;sessions:Partial<Record<string,string>>}[];
 
 type Person = { name:string; title?:string; affiliation?:string; photo?:string };
@@ -409,26 +409,27 @@ function TrackScheduleSection() {
     {name:'AI Expert',hours:'24 hours'},
     {name:'AI Junior',hours:'24 hours'},
     {name:'AI Administrator',hours:'28 hours'},
-    {name:'AI Viber',hours:'32 hours'},
+    {name:'AI Viber',hours:'28 hours'},
     {name:'AI Engineer',hours:'32 hours'},
   ];
   return <div id="track-schedule" className="activities-schedule">
-    <section className="schedule-notice"><div className="container"><Clock3/><div><strong>Arabic cohort schedule · 18 November–13 December 2026</strong><span>All sessions: 6:00–10:00 PM Cairo time · Live online training · Four hours per session</span></div></div></section>
+    <section className="schedule-notice"><div className="container"><Clock3/><div><strong>Arabic cohort schedule · 20 November–15 December 2026</strong><span>Training sessions: 6:00–10:00 PM Cairo time · Live online training · Final exams: 15 December</span></div></div></section>
     <section className="section container schedule-page">
       <div className="section-heading"><span className="eyebrow">Track-by-track schedule</span><h2>Find every session for your selected pathway.</h2><p>Each pathway completes its published 24–32 training hours before the final assessment and certificate requirements.</p></div>
       <div className="schedule-track-grid">{scheduleTracks.map(track=>{
         const sessions=cohortSchedule.filter(row=>row.sessions[track.name]);
-        return <article key={track.name}><div className="schedule-track-heading"><div><h3>{track.name}</h3><span>{track.hours}</span></div><strong>{sessions.length}<small>sessions</small></strong></div><ol>{sessions.map(session=><li key={`${track.name}-${session.date}`}><span>{session.day.slice(0,3)}</span><div><b>{session.date}</b><small>{session.sessions[track.name]} Cairo time</small></div></li>)}</ol></article>;
+        const trainingSessions=sessions.filter(session=>session.sessions[track.name]!=='Final exam');
+        return <article key={track.name}><div className="schedule-track-heading"><div><h3>{track.name}</h3><span>{track.hours}</span></div><strong>{trainingSessions.length}<small>training sessions</small></strong></div><ol>{sessions.map(session=><li key={`${track.name}-${session.date}`}><span>{session.day.slice(0,3)}</span><div><b>{session.date}</b><small>{session.sessions[track.name]==='Final exam'?'Final exam':`${session.sessions[track.name]} Cairo time`}</small></div></li>)}</ol></article>;
       })}</div>
     </section>
     <section className="section soft"><div className="container"><div className="section-heading"><span className="eyebrow">Complete cohort calendar</span><h2>One calendar. Six pathways.</h2><p>Scroll horizontally on smaller screens to compare all tracks.</p></div><div className="schedule-table-wrap"><table className="schedule-table"><thead><tr><th>Day</th><th>Date</th>{scheduleTracks.map(track=><th key={track.name}><span>{track.name}</span><small>{track.hours}</small></th>)}</tr></thead><tbody>{cohortSchedule.map(row=><tr key={row.date}><th>{row.day}</th><td>{row.date}</td>{scheduleTracks.map(track=><td className={row.sessions[track.name]?'active':''} key={track.name}>{row.sessions[track.name]||'—'}</td>)}</tr>)}</tbody></table></div><p className="schedule-footnote"><Clock3/> Times are published in Cairo time (UTC+2 in November and December 2026). Participants will receive online access details through their registered email addresses.</p></div></section>
-    <section className="schedule-cta"><div className="container"><div><span>Registration closes 15 November</span><h2>Choose one pathway and join the Arabic cohort.</h2></div><Link className="btn primary" to="/track-registration">Register for a track <ArrowRight/></Link></div></section>
+    <section className="schedule-cta"><div className="container"><div><span>Registration closes 20 November</span><h2>Choose one pathway and join the Arabic cohort.</h2></div><Link className="btn primary" to="/track-registration">Register for a track <ArrowRight/></Link></div></section>
   </div>;
 }
 
 function ActivitiesPage(){return <><Activities/><TrackScheduleSection/></>}
 
-const trackRegistrationDeadline = new Date('2026-11-15T21:59:59Z'); // 15 November, 11:59 PM Cairo
+const trackRegistrationDeadline = new Date('2026-11-20T21:59:59Z'); // 20 November, 11:59 PM Cairo
 function TrackRegistration() {
   const location=useLocation();
   const requestedTrack=new URLSearchParams(location.search).get('track')||'';
@@ -438,7 +439,7 @@ function TrackRegistration() {
   const isClosed=Date.now()>trackRegistrationDeadline.getTime();
   async function submit(e:FormEvent<HTMLFormElement>){
     e.preventDefault();
-    if(isClosed){setStatus('error');setMessage('Track registration closed on 15 November 2026 at 11:59 PM Cairo time.');return;}
+    if(isClosed){setStatus('error');setMessage('Track registration closed on 20 November 2026 at 11:59 PM Cairo time.');return;}
     const formElement=e.currentTarget; const form=new FormData(formElement); setStatus('sending'); setMessage('');
     const email=String(form.get('email')||'').trim().toLowerCase(); const trackSlug=String(form.get('track')||''); const track=tracks.find(item=>item.slug===trackSlug);
     try{

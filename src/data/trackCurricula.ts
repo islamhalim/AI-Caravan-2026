@@ -162,7 +162,7 @@ export const trackCurricula: TrackCurriculum[] = [
     slug: 'ai-viber',
     name: 'AI Viber',
     goal: 'Equip developers to use AI-assisted engineering methods to specify, build, test, secure, and improve modern software products while retaining human engineering judgment.',
-    delivery: '32 hours · Online training · 16 sessions',
+    delivery: '28 hours · Online training · 7 live sessions plus a final examination',
     learningApproach: 'Participants carry one small software product through specification, working implementation, extension, documentation, and handover, with strong emphasis on review and recovery from agent errors.',
     outcomes: [
       'Use AI coding assistants with effective prompts and managed context.',
@@ -182,13 +182,23 @@ export const trackCurricula: TrackCurriculum[] = [
     prerequisites: ['Programming fundamentals in any modern language.', 'Basic Git, command-line, HTTP, JSON, and API familiarity.', 'A computer with at least 8 GB RAM and permission to install software.', 'Stable internet, an IDE such as Visual Studio Code, GitHub, and a Node.js or Python runtime.', 'No previous machine-learning experience is required.'],
     tools: ['An AI coding assistant', 'Visual Studio Code or another IDE', 'Git and GitHub', 'Node.js or Python', 'Automated testing and CI', 'Static analysis and security scanning', 'Local/offline model route where access is restricted'],
     sessions: [
-      {title: 'Block 1 · Setup, safe use, and specification', detail: 'Sessions 1–3 · 6 hours'},
-      {title: 'Block 2 · Scaffold and core implementation', detail: 'Sessions 4–8 · 10 hours; includes code review, integration, and failure recovery.'},
-      {title: 'Block 3 · Quality and product extension', detail: 'Sessions 9–14 · 12 hours; testing, debugging, documentation, security, deployment, and handover.'},
-      {title: 'Block 4 · Demonstration and final examination', detail: 'Sessions 15–16 · 4 hours'}
+      {title: 'Foundations of AI-Assisted Software Engineering'},
+      {title: 'Agent Setup and Safe Use'},
+      {title: 'Requirements and Specification'},
+      {title: 'Directing an Agent: Prompting and Context'},
+      {title: 'Project Scaffold and Architecture Decisions'},
+      {title: 'Core Feature One: Implementing with an Agent'},
+      {title: 'Code Review and Recovery from Agent Failure'},
+      {title: 'Testing from Acceptance Criteria'},
+      {title: 'Debugging and Fault Diagnosis'},
+      {title: 'Adding an AI-Backed Capability'},
+      {title: 'Security Checks and Maintainability'},
+      {title: 'Documentation, Deployment and Handover'},
+      {title: 'Project Demonstration and Submission'},
+      {title: 'Final Exam'}
     ],
     assessment: ['Project and demonstration: 50% of the final grade.', 'Timed practical exercise on an unseen repository: 20%.', 'Automatically scored 45-item knowledge examination: 30%.', 'Project quality is checked across specification, working features, verification, security, maintainability, and handover.'],
-    completion: ['Attend at least 13 of 16 sessions.', 'Achieve at least 70% overall and at least 50% in both practical and knowledge components.', 'Pass all three project milestones and publish the demonstration.', 'Complete at least 10 of 15 session questionnaires.', 'Receive a joint IEEE Computer Society Region 8 and AI Caravan certificate.']
+    completion: ['Attend at least 6 of 7 live training sessions.', 'Achieve at least 70% overall and at least 50% in both practical and knowledge components.', 'Pass all three project milestones and publish the demonstration.', 'Complete the required module feedback.', 'Receive a joint IEEE Computer Society Region 8 and AI Caravan certificate.']
   },
   {
     slug: 'ai-administrator',
