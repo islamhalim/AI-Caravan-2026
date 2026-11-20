@@ -26,8 +26,7 @@ service cloud.firestore {
         ];
       allow read, delete: if isRegistrationAdmin();
       allow update: if isRegistrationAdmin()
-        && request.resource.data.email == resource.data.email
-        && request.resource.data.programYear == resource.data.programYear;
+        && request.resource.data.email == resource.data.email;
     }
 
     match /summit-registrations-2026/{emailId} {
@@ -47,8 +46,7 @@ service cloud.firestore {
         ];
       allow read, delete: if isRegistrationAdmin();
       allow update: if isRegistrationAdmin()
-        && request.resource.data.email == resource.data.email
-        && request.resource.data.programYear == resource.data.programYear;
+        && request.resource.data.email == resource.data.email;
     }
   }
 }
