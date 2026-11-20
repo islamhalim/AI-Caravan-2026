@@ -35,8 +35,8 @@ const tracks = [
 ];
 
 const cohortSchedule = [
-  {day:'Friday',date:'20 Nov 2026',sessions:{'AI Strategist':'6–10 PM','AI Engineer':'6–10 PM'}},
-  {day:'Saturday',date:'21 Nov 2026',sessions:{'AI Strategist':'6–10 PM','AI Engineer':'6–10 PM'}},
+  {day:'Friday',date:'20 Nov 2026',sessions:{'AI Engineer':'6–10 PM'}},
+  {day:'Saturday',date:'21 Nov 2026',sessions:{'AI Engineer':'6–10 PM'}},
   {day:'Sunday',date:'22 Nov 2026',sessions:{'AI Administrator':'6–10 PM','AI Viber':'6–10 PM'}},
   {day:'Monday',date:'23 Nov 2026',sessions:{'AI Expert':'6–10 PM','AI Junior':'6–10 PM'}},
   {day:'Wednesday',date:'25 Nov 2026',sessions:{'AI Administrator':'6–10 PM','AI Viber':'6–10 PM'}},
@@ -53,8 +53,8 @@ const cohortSchedule = [
   {day:'Monday',date:'7 Dec 2026',sessions:{'AI Expert':'6–10 PM','AI Junior':'6–10 PM'}},
   {day:'Wednesday',date:'9 Dec 2026',sessions:{'AI Administrator':'6–10 PM','AI Viber':'6–10 PM'}},
   {day:'Thursday',date:'10 Dec 2026',sessions:{'AI Expert':'6–10 PM','AI Junior':'6–10 PM'}},
-  {day:'Friday',date:'11 Dec 2026',sessions:{'AI Engineer':'6–10 PM'}},
-  {day:'Saturday',date:'12 Dec 2026',sessions:{'AI Engineer':'6–10 PM'}},
+  {day:'Friday',date:'11 Dec 2026',sessions:{'AI Strategist':'6–10 PM','AI Engineer':'6–10 PM'}},
+  {day:'Saturday',date:'12 Dec 2026',sessions:{'AI Strategist':'6–10 PM','AI Engineer':'6–10 PM'}},
   {day:'Sunday',date:'13 Dec 2026',sessions:{'AI Administrator':'6–10 PM','AI Viber':'6–10 PM'}},
   {day:'Tuesday',date:'15 Dec 2026',sessions:{'AI Strategist':'Final exam','AI Expert':'Final exam','AI Junior':'Final exam','AI Administrator':'Final exam','AI Viber':'Final exam','AI Engineer':'Final exam'}},
 ] as {day:string;date:string;sessions:Partial<Record<string,string>>}[];
