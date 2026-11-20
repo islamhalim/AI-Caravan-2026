@@ -25,7 +25,9 @@ service cloud.firestore {
           'AI Viber', 'AI Administrator', 'AI Junior'
         ];
       allow read, delete: if isRegistrationAdmin();
-      allow update: if false;
+      allow update: if isRegistrationAdmin()
+        && request.resource.data.email == resource.data.email
+        && request.resource.data.programYear == resource.data.programYear;
     }
 
     match /summit-registrations-2026/{emailId} {
@@ -44,7 +46,9 @@ service cloud.firestore {
           'accommodation', 'without-accommodation', 'access'
         ];
       allow read, delete: if isRegistrationAdmin();
-      allow update: if false;
+      allow update: if isRegistrationAdmin()
+        && request.resource.data.email == resource.data.email
+        && request.resource.data.programYear == resource.data.programYear;
     }
   }
 }
