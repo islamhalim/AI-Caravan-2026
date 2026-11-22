@@ -5,6 +5,7 @@ import { db } from './components/config/firebase';
 import AdminRegistrations from './AdminRegistrations';
 import { getTeamProfileLink, partnerLinks } from './data/externalLinks';
 import { getTrackCurriculum } from './data/trackCurricula';
+import { loadTrackMaterials, validateTrackAccessCode, type CohortKey, type TrackMaterial } from './data/trackMaterials';
 import './track-details.css';
 import './publication.css';
 import './summit.css';
@@ -12,7 +13,7 @@ import './schedule.css';
 import {
   ArrowRight, Bot, Briefcase, CalendarDays, CheckCircle2,
   ChevronRight, Code2, Globe2, GraduationCap, Mail, MapPin, Menu,
-  Award, BookOpen, Clock3, ExternalLink, Image, Network, Play, Rocket, Send, Sparkles, Target, X, Zap
+  Award, BookOpen, Clock3, ExternalLink, FileText, Image, LockKeyhole, Network, Play, Rocket, Send, Sparkles, Target, Video, X, Zap
 } from 'lucide-react';
 
 const nav = [
@@ -335,6 +336,22 @@ function TrackCard({track}:{track:(typeof tracks)[number]}) {
   </article>
 }
 
+function TrackMaterialsGate({trackSlug,trackName}:{trackSlug:string;trackName:string}){
+  const storageKey=`ai-caravan-materials-${trackSlug}`;
+  const storedCohort=()=>{const value=sessionStorage.getItem(storageKey);return value==='arabic'?'arabic':value==='original'||value==='unlocked'?'original':null;};
+  const [code,setCode]=useState('');const [cohort,setCohort]=useState<CohortKey|null>(storedCohort);const unlocked=cohort!==null;
+  const [materials,setMaterials]=useState<TrackMaterial[]>([]);const [status,setStatus]=useState<'idle'|'checking'|'loading'|'error'>('idle');const [message,setMessage]=useState('');
+  useEffect(()=>{setCode('');setCohort(storedCohort());setMaterials([]);setStatus('idle');setMessage('');},[storageKey]);
+  useEffect(()=>{if(!cohort)return;setStatus('loading');loadTrackMaterials(trackSlug,cohort).then(rows=>{setMaterials(rows);setStatus('idle');}).catch(error=>{console.error(error);setStatus('error');const detail=error instanceof Error?error.message:'Unknown error';setMessage(cohort==='arabic'?`The Arabic cohort materials could not be loaded: ${detail}`:'The materials could not be loaded. Please try again later.');});},[cohort,trackSlug]);
+  async function unlock(event:FormEvent){event.preventDefault();setStatus('checking');setMessage('');try{const matchedCohort=await validateTrackAccessCode(trackSlug,code);if(matchedCohort){sessionStorage.setItem(storageKey,matchedCohort);setCohort(matchedCohort);setCode('');setStatus('loading');}else{setStatus('error');setMessage('The access code is not valid for this track. Please check the code and try again.');}}catch(error){console.error(error);setStatus('error');setMessage('The access code could not be checked. Please try again.');}}
+  function lock(){sessionStorage.removeItem(storageKey);setCohort(null);setMaterials([]);setMessage('');setStatus('idle');}
+  return <section className="section track-materials-section"><div className="container">
+    <div className="section-heading track-materials-heading"><div><span className="eyebrow">Participant resources</span><h2>Session materials for {trackName}</h2><p>Slides and session recordings are available only to participants with a valid access code for this track.</p></div>{unlocked&&<button className="materials-lock" type="button" onClick={lock}><LockKeyhole/> Lock materials</button>}</div>
+    {cohort&&<div className="materials-cohort-label"><CheckCircle2/>{cohort==='arabic'?'Arabic cohort':'International cohort'}</div>}
+    {!unlocked?<div className="materials-access-card"><div className="materials-access-icon"><LockKeyhole/></div><div><h3>Enter your track access code</h3><p>Use the code sent to your registered email address. Access codes are track-specific and should not be shared.</p><form onSubmit={unlock}><label htmlFor={`materials-code-${trackSlug}`}>Access code</label><div><input id={`materials-code-${trackSlug}`} type="password" autoComplete="off" value={code} onChange={event=>setCode(event.target.value)} placeholder="Enter access code" required/><button className="btn primary" type="submit" disabled={status==='checking'}>{status==='checking'?'Checking…':'View materials'}</button></div></form>{message&&<div className="form-message error" role="alert">{message}</div>}</div></div>:<div className="materials-panel">{status==='loading'?<div className="materials-loading"><Clock3/><span>Loading track materials…</span></div>:status==='error'?<div className="form-message error">{message}</div>:<><div className="materials-unlocked"><CheckCircle2/><span>Access confirmed</span><strong>{materials.length} sessions available</strong></div><div className="materials-table-wrap"><table className="materials-table"><thead><tr><th>Session</th><th>Session title</th><th>Slides</th><th>Video recording</th></tr></thead><tbody>{materials.map(item=><tr key={`${trackSlug}-${item.session}`}><td><span>{item.session}</span></td><td>{item.title}</td><td>{item.slides?<a href={item.slides} target="_blank" rel="noopener noreferrer"><FileText/>Open slides<ExternalLink/></a>:<span className="materials-na">N/A</span>}</td><td>{item.recording?<div className="recording-resource"><a href={item.recording} target="_blank" rel="noopener noreferrer"><Video/>Watch recording<ExternalLink/></a>{item.recordingPasscode&&<span className="recording-passcode">Passcode: <code>{item.recordingPasscode}</code></span>}</div>:<span className="materials-na">N/A</span>}</td></tr>)}</tbody></table></div>{!materials.length&&<div className="materials-empty"><FileText/><h3>No session materials have been published yet.</h3><p>Please check again after the next session.</p></div>}</>}</div>}
+  </div></section>;
+}
+
 function TrackDetails() {
   const {trackSlug} = useParams();
   const curriculum = getTrackCurriculum(trackSlug);
@@ -395,6 +412,8 @@ function TrackDetails() {
       </div>
     </section>
 
+    <TrackMaterialsGate trackSlug={track.slug} trackName={track.name}/>
+
     <section className="section container track-detail-committee">
       <div className="section-heading"><span className="eyebrow">Curriculum Development Committee</span><h2>The experts shaping this pathway</h2></div>
       <div className="committee-grid">{track.committee.map(member=><a href={getTeamProfileLink(member.name)} target="_blank" rel="noopener noreferrer" key={member.name}><div><strong>{member.name}</strong><span>{member.role}</span></div><ExternalLink/></a>)}</div>
@@ -423,13 +442,13 @@ function TrackScheduleSection() {
       })}</div>
     </section>
     <section className="section soft"><div className="container"><div className="section-heading"><span className="eyebrow">Complete cohort calendar</span><h2>One calendar. Six pathways.</h2><p>Scroll horizontally on smaller screens to compare all tracks.</p></div><div className="schedule-table-wrap"><table className="schedule-table"><thead><tr><th>Day</th><th>Date</th>{scheduleTracks.map(track=><th key={track.name}><span>{track.name}</span><small>{track.hours}</small></th>)}</tr></thead><tbody>{cohortSchedule.map(row=><tr key={row.date}><th>{row.day}</th><td>{row.date}</td>{scheduleTracks.map(track=><td className={row.sessions[track.name]?'active':''} key={track.name}>{row.sessions[track.name]||'—'}</td>)}</tr>)}</tbody></table></div><p className="schedule-footnote"><Clock3/> Times are published in Cairo time (UTC+2 in November and December 2026). Participants will receive online access details through their registered email addresses.</p></div></section>
-    <section className="schedule-cta"><div className="container"><div><span>Registration closes 20 November</span><h2>Choose one pathway and join the Arabic cohort.</h2></div><Link className="btn primary" to="/track-registration">Register for a track <ArrowRight/></Link></div></section>
+    <section className="schedule-cta"><div className="container"><div><span>Registration closes 24 November</span><h2>Choose one pathway and join the Arabic cohort.</h2></div><Link className="btn primary" to="/track-registration">Register for a track <ArrowRight/></Link></div></section>
   </div>;
 }
 
 function ActivitiesPage(){return <Activities/>}
 
-const trackRegistrationDeadline = new Date('2026-11-20T21:59:59Z'); // 20 November, 11:59 PM Cairo
+const trackRegistrationDeadline = new Date('2026-11-24T21:59:59Z'); // 24 November, 11:59 PM Cairo
 function TrackRegistration() {
   const location=useLocation();
   const requestedTrack=new URLSearchParams(location.search).get('track')||'';
@@ -439,7 +458,7 @@ function TrackRegistration() {
   const isClosed=Date.now()>trackRegistrationDeadline.getTime();
   async function submit(e:FormEvent<HTMLFormElement>){
     e.preventDefault();
-    if(isClosed){setStatus('error');setMessage('Track registration closed on 20 November 2026 at 11:59 PM Cairo time.');return;}
+    if(isClosed){setStatus('error');setMessage('Track registration closed on 24 November 2026 at 11:59 PM Cairo time.');return;}
     const formElement=e.currentTarget; const form=new FormData(formElement); setStatus('sending'); setMessage('');
     const email=String(form.get('email')||'').trim().toLowerCase(); const trackSlug=String(form.get('track')||''); const track=tracks.find(item=>item.slug===trackSlug);
     try{
